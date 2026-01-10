@@ -1,8 +1,7 @@
 from flask import Blueprint, flash, g, redirect, render_template, request, session, url_for
 from werkzeug.security import check_password_hash, generate_password_hash
-from teresaefrancisco.tools import tools
-
-from teresaefrancisco.models import Product , Contribution , Confirmation
+from inesegoncalo.tools import tools
+from inesegoncalo.models import Product , Contribution , Confirmation
 
 bp = Blueprint('confirmations', __name__, url_prefix='/confirmations')
 
@@ -17,6 +16,7 @@ def confirmation():
         error = None
         name = request.form.get('name')
         comment = request.form.get('comment')
+        music = request.form.get('music')
         is_vegetarian = True if request.form.get('is_vegetarian') == 'True' else False
         has_food_restriction = True if request.form.get('has_food_restriction') == 'True' else False
         food_restriction = request.form.get('food_restriction')
@@ -30,8 +30,10 @@ def confirmation():
             confirmation = Confirmation(name=name)
             if comment:
                 confirmation.comment = comment
+            if music:
+                confirmation.music = music
             if is_vegetarian:
-                confirmation.comment = comment
+                confirmation.is_vegetarian = is_vegetarian
             if has_food_restriction:
                 confirmation.has_food_restriction = has_food_restriction
                 confirmation.food_restriction = food_restriction

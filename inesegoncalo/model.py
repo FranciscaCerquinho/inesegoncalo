@@ -11,9 +11,6 @@ class Model():
     _description = None
     __tablename__ = None
 
-    def __repr__(self):
-        return '<User %r>' % self.username
-
     def create(self):
         db.session.add(self)
         db.session.commit()

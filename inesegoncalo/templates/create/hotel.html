@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="product_form_container">
+    <form method="POST" class="product_form" enctype="multipart/form-data">
+            <div class="product_attribute_container">
+                <label for="name">Nome</label>
+                <input type="text" name="name" placeholder="Nome">
+            </div>
+            <div class="product_attribute_container">
+                <label for="adress">Morada</label>
+                <input type="text" name="adress" placeholder="Morada">
+            </div>
+            <div class="product_attribute_container">
+                <label for="phone">Telefone</label>
+                <input type="text" name="phone" placeholder="Telefone">
+            </div>
+            <div class="product_attribute_container">
+                <label for="email">Email</label>
+                <input type="text" name="email" placeholder="Email">
+            </div>
+            <button class ="accept" type="submit">Gravar</button>
+    </form>
+</div>
+{% endblock %}

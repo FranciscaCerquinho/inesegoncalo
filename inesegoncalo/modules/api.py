@@ -4,9 +4,9 @@ import csv
 
 from flask import Blueprint, flash, g, jsonify, redirect, render_template, request, current_app, url_for
 from werkzeug.security import check_password_hash, generate_password_hash
-from teresaefrancisco.tools import tools
-from teresaefrancisco.model import Model
-from teresaefrancisco.models import Product , Confirmation , SpecificInfo
+from inesegoncalo.tools import tools
+from inesegoncalo.model import Model
+from inesegoncalo.models import Product , Confirmation , SpecificInfo
 
 bp = Blueprint('api', __name__, url_prefix='/api')
 

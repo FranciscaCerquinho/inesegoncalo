@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<script src="{{ url_for('static', filename='js/edit_products.js')}}" defer></script>
+
+<div class="product_background">
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Adress</th>
+            <th>Phone</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for hotel in hotels %}
+            <tr>
+                <td class="no_padding"><a href="{{url_for('edit.hotel',hotel_id=hotel.id)}}">{{hotel.name}}</a></td>
+                <td class="no_padding">{{hotel.adress}}</td>
+                <td class="no_padding">{{hotel.phone}}</td>
+                <td class="no_padding">{{hotel.email}}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% set url = url_for('create.hotel') %}
+<button class="rsvp_button" data-url="{{url}}" onclick="redirectTo(this)"> Criar Hotel </button>
+</div>
+{% endblock %}

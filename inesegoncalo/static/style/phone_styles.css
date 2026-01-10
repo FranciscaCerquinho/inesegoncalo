@@ -65,14 +65,29 @@
         background-attachment: scroll!important;
     }
 
+    .text_wed_info{
+        background-color: rgba(1,1,1,0.4)!important;
+        padding-top: 3rem!important;
+    }
+
+    .info_align_left{
+        padding: 4rem!important;
+    }
+    
+    .info_align_right{
+        padding: 4rem!important;
+    }
+
     .info_align_right .text_wed_info_block{
         padding-right: 0!important;
         padding-top: 0!important;
+        width: 100%!important;
     }
 
     .info_align_left .text_wed_info_block{
         padding-left: 0!important;
         padding-top: 0!important;
+        width: 100%!important;
     }
 
     .flexi-box {
@@ -132,11 +147,7 @@
     .contributions_box {
         justify-content: center!important;
     }
-
-    .products_background{
-        background: rgb(167 167 192)!important;;
-    }
-
+    
     .accordion-content{
         margin: 1rem!important;
     }
@@ -164,5 +175,13 @@
       
     .index_car_container{
         min-height: 4rem!important;
+    }
+
+    .hotel_card {
+        width: 80vw!important;
+    }
+
+    .dresscode{
+        font-size: 1.5rem!important;
     }
 }

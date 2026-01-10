@@ -6,8 +6,8 @@ from flask_session import Session
 
 from . import sql_db
 from . import modules
-from teresaefrancisco.tools import specific_info
-from teresaefrancisco.models import SpecificInfo
+from inesegoncalo.tools import specific_info
+from inesegoncalo.models import SpecificInfo
 
 def create_app(test_config=None):
     app = Flask(__name__, instance_relative_config=True)
@@ -75,5 +75,6 @@ def create_app(test_config=None):
     with app.app_context():
         sql_db.db.init_app(app)
         sql_db.db.create_all()
+        
 
     return app

@@ -1,15 +1,15 @@
 from flask import Blueprint, flash, g, redirect, render_template, request, session, url_for
 from werkzeug.security import check_password_hash, generate_password_hash
-from teresaefrancisco.tools import tools
+from inesegoncalo.tools import tools
 
-from teresaefrancisco.models import Product , Contribution
+from inesegoncalo.models import Product , Contribution
 
 
 bp = Blueprint('products', __name__, url_prefix='/products')
 
 @bp.route('/all', methods=('GET', 'POST'))
 @bp.route('/all/<update>', methods=('GET', 'POST'))
-def all(update=None):    
+def all(update=None):
     products = Product.query.filter_by().order_by(Product.priority).all()
     if update == 'update':
         for product in products:
@@ -18,6 +18,10 @@ def all(update=None):
     products = [product for product in products if not product.is_paid()]
     #products = list(set(products) - set(products_paid))
     return render_template('products/all.html',products=products , products_paid=products_paid)
+
+@bp.route('/add_contribution', methods=('GET', 'POST'))
+def add_contribution():
+    return render_template('products/add_contribution.html')
 
 @bp.route('/product/<product_id>', methods=('GET', 'POST'))
 @bp.route('/product/<product_id>/<contribution_id>', methods=('GET', 'POST'))
@@ -51,6 +55,21 @@ def product(product_id,contribution_id=None):
             product.price_paid += value_contributed
             product.save()
 
-            return redirect(url_for('products.product',product_id=product.id,contribution_id=contribution.id))
+            return redirect(url_for('products.add_contribution'))
+
+            #return redirect(url_for('products.product',product_id=product.id,contribution_id=contribution.id))
         flash(error)
     return render_template('products/product.html',product=product,contribution=contribution)
+
+@bp.route('/lista_casamento', methods=('GET', 'POST'))
+def lista_casamento():
+    return render_template('products/lista_casamento.html')
+
+@bp.route('/luademel', methods=('GET', 'POST'))
+def luademel() :
+    return render_template('products/luademel.html')
+
+
+@bp.route('/casa', methods=('GET', 'POST'))
+def casa() :
+    return render_template('products/casa.html')

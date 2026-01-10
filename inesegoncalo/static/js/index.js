@@ -1,6 +1,6 @@
 var contentDivs = document.querySelectorAll(".sliddingDivs, .appearingDivs, .slidingAppearingDivsRight, .slidingAppearingDivsLeft","index_car_container");
-var car = document.getElementById('car');
-var car_width = parseFloat(getComputedStyle(car).getPropertyValue('width'))
+/* var car = document.getElementById('car');
+var car_width = parseFloat(getComputedStyle(car).getPropertyValue('width')) */
 
 window.addEventListener('load', onload);
 window.addEventListener('scroll', checkContentDivs,false);
@@ -18,7 +18,7 @@ function checkContentDivs() {
             div.classList.remove('show');
         }
     });
-    moveCar(car);
+    /* moveCar(car); */
 }
 
 function moveCar(car){

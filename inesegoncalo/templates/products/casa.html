@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<script src="{{ url_for('static', filename='js/products.js')}}" defer></script>
+<link href="{{ url_for('static', filename='style/base.css')}}" rel="stylesheet">
+
+<div class="mt-5">
+	<div class="container">
+	  <h2 class="pb-3 pt-2 border-bottom mb-5" style="color:#5086c1">A NOSSA CASA</h2>
+		<div class="row mb-4">
+		  <div class="col-md-6 mb-4">
+			<img  src="{{url_for('static',filename='images/3.jpg')}}" style="width:100%" alt="Image" class="img-fluid">
+		  </div>
+		  <div class="col-md-6 mb-5">
+			<p class="mb-5">Querida família e amigos, </p>
+			<p class="mb-5">Apesar de já termos uma casa bastante recheada, contamos com vocês para torná-la ainda mais acolhedora com algumas peças que nos faltam.</p>
+				<p class="mb-5">Para isso fizemos uma lista de presentes no El Corte Inglés, que podem consultar no link abaixo.</p>
+			<p class="mb-5"> Podem fazer a compra diretamente no site ou presencialmente na loja. </p>
+			<p >Para comprar online basta: </p>
+			<p class="mb-2"><b>1.</b> Aceder a este <a href="https://www.elcorteingles.es/listasdeboda/default.asp?idioma=040" style="text-decoration: underline;color:#919191"><b>link</b></a> </p>
+			<p class="mb-2"><b>2.</b> Selecionar a secção convidados </p>
+			<p class="mb-5"><b>3.</b> Procurar pela nossa lista, escrevendo um dos nossos nomes: <b>Catarina Henriques</b> ou <b>Joao Aleluia</b> </p>
+
+			<h5>Muito obrigada e até dia 30 de setembro!</h5>
+		  </div>
+	  </div>
+	</div>
+  </div> 
+
+
+{% endblock %}

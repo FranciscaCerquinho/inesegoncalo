@@ -1,6 +1,5 @@
-from email.policy import default
-from teresaefrancisco import model 
-from teresaefrancisco.sql_db import db
+from inesegoncalo import model 
+from inesegoncalo.sql_db import db
 from sqlalchemy import Column, Integer , String , Text ,Float , Boolean
 from sqlalchemy.orm import relationship
 
@@ -48,5 +47,7 @@ class Product(db.Model ,model.Model,model.Base):
             self.store = values['store']
         if values['show_price'] != self.show_price:
             self.show_price = values['show_price']
+        if values['priority'] != self.priority:
+            self.priority = values['priority']
         self.save()
         return True

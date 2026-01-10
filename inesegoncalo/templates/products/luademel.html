@@ -1,0 +1,45 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<script src="{{ url_for('static', filename='js/products.js')}}" defer></script>
+<link href="{{ url_for('static', filename='style/base.css')}}" rel="stylesheet">
+
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-6 mb-5">
+      <a href="{{url_for('products.all')}}">
+      <div class="card">
+        <img class="mb-3" src="{{url_for('static',filename='images/lua_de_mel.jpg')}}" style="opacity:0.8;         filter: grayscale(100%); ">
+        <div class="card-body" style="color:#5086c1;font-weight: bold;">
+          <p class="card-text" style="text-align:center; ; color:#5086c1">LUA DE MEL</p>
+        </div>
+      </div>
+      </a>
+    </div>
+    <div class="col-md-6">
+      <a href="{{url_for('products.casa')}}">
+      <div class="card">
+        <img class="mb-3" src="{{url_for('static',filename='images/casa.jpeg')}}" style="opacity:0.8;filter: grayscale(100%);        ">
+        <div class="card-body" style="color:#5086c1; font-weight: bold;">
+          <p class="card-text"  style="text-align:center; color:#5086c1">CASA</p>
+        </div>
+      </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- 
+<section class="bg-white">
+    <div class="row">
+  {% for product in products %}
+    {{products_macro.card(product)}}
+  {% endfor %}
+  {% for product in products_paid %}
+    {{products_macro.card_paid(product)}}
+  {% endfor %}
+    </div>
+</section> -->
+
+{% endblock %}

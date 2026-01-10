@@ -3,23 +3,43 @@
 
 {% block content %}
 <script src="{{ url_for('static', filename='js/products.js')}}" defer></script>
+<link href="{{ url_for('static', filename='style/base.css')}}" rel="stylesheet">
+
+<div class="mt-5">
+	<div class="container">
+	  <h3 class="pb-3 pt-2 border-bottom mb-5" style="color:#5086c1">A NOSSA LUA DE MEL</h3>
+		<div class="row mb-4">
+		  <div class="col-md-6 mb-4">
+			<img  src="{{url_for('static',filename='images/diapedido.jpg')}}" style="width:100%" alt="Image" class="img-fluid">
+		  </div>
+		  <div class="col-md-6 mb-5">
+			<p class="mb-5">Querida família e amigos, </p>
+			<p >Como sabem, ainda não temos uma casa, por isso, se quiserem oferecer um presente, gostávamos muito que nos ajudassem na nossa lua-de-mel: &nbsp <b>14 dias na Namíbia e no Botswana </b> !!!</p>
+			<p class="mb-5">Aqui está o que irá ser o nosso percurso. </p>
+			<p >Para participarem basta:</p>
+			<p  class="mb-2"><b>1.</b> Selecionar 1 passo à vossa escolha</p>
+			<p  class="mb-2"><b>2.</b> Preencher o formulário com nome(s) / valor / mensagem </p>
+			<p  class="mb-2"><b>3.</b> Fazer a transferência para o <b>IBAN:</b></p>
+			<p class="mb-5">PT50 0045 8713 4035 1301 5262 9 </p>
+			<h5>Muito Obrigada e até dia 27 de Julho!</h5>
+		  </div>
+	  </div>
+	</div>
+	<div class="container mb-2">
+		<i class="fas fa-plane fa-2x mb-2" style="color:#5086c1; transform: rotate(45deg)"></i>
+
+	  {% for batch in products|batch(2) %}
+		{% set batch_length = batch|length %}
+		{% for index in range(0, batch_length, 2) %}
+			{% if loop.index0 < batch_length %}
+				{{ products_macro.card(batch[loop.index - 1], batch[loop.index - 2])}}
+			{% endif %}
+		{% endfor %}
+	  {% endfor %}
+	  <i class="fas fa-plane fa-2x mb-4" style="color:#5086c1; transform: rotate(220deg)"></i>
+
+	</div>
+  </div> 
 
 
-<div class="products_background">
-  <div class="product_card productSliddingDivs">
-    <a href="http://www.portadeferro.pt/listas.asp" target="_blank">
-        <img src="{{url_for('static',filename='images/porta_ferro.jpg')}}" alt="Imagem da Peça">
-        <div>
-            <p>Login: FrTe352C</p>
-            <p>Password: qxnMYsnk</p>
-        </div>
-    </a>
-  </div>
-  {% for product in products %}
-    {{products_macro.card(product)}}
-  {% endfor %}
-  {% for product in products_paid %}
-    {{products_macro.card_paid(product)}}
-  {% endfor %}
-</div>
 {% endblock %}

@@ -1,8 +1,8 @@
 from flask import Blueprint, flash, g, redirect, render_template, request, session, url_for
 from werkzeug.security import check_password_hash, generate_password_hash
-from teresaefrancisco.tools import tools
+from inesegoncalo.tools import tools
 
-from teresaefrancisco.models import Product , Contribution
+from inesegoncalo.models import Product , Contribution
 
 
 bp = Blueprint('honeymoon', __name__, url_prefix='/honeymoon')
@@ -50,7 +50,7 @@ def product(product_id,contribution_id=None):
 
             product.price_paid += value_contributed
             product.save()
-
+            
             return redirect(url_for('honeymoon.product',product_id=product.id,contribution_id=contribution.id))
         flash(error)
     return render_template('honeymoon/product.html',product=product,contribution=contribution)

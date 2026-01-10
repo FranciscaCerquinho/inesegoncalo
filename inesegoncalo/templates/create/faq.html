@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="product_form_container">
+    <form method="POST" class="product_form" enctype="multipart/form-data">
+            <div class="product_attribute_container">
+                <label for="question">Pergunta</label>
+                <input type="text" name="question" placeholder="Pergunta">
+            </div>
+            <div class="product_attribute_container">
+                <label for="answer">Resposta</label>
+                <input type="text" name="answer" placeholder="Resposta">
+            </div>
+            <button class ="accept" type="submit">Gravar</button>
+    </form>
+</div>
+{% endblock %}

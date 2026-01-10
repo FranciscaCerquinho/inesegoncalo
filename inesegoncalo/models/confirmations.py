@@ -1,5 +1,5 @@
-from teresaefrancisco import model 
-from teresaefrancisco.sql_db import db
+from inesegoncalo import model 
+from inesegoncalo.sql_db import db
 from sqlalchemy import Column, Integer , Text , Boolean
 
 class Confirmation(db.Model ,model.Model,model.Base):
@@ -11,3 +11,4 @@ class Confirmation(db.Model ,model.Model,model.Base):
     food_restriction = Column(Text)
     is_vegetarian = Column(Boolean)
     comment = Column(Text)
+    music = Column(Text)

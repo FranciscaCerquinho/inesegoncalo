@@ -8,18 +8,20 @@
         <table  class="table">
             <thead>
                 <tr>
-                    <th>Nome</th>
+                    <th>Name</th>
                     <th>Restrições alimentares</th>
                     <th>Vegetariano</th>
+                    <th>Música</th>
                     <th>Observações</th>
                 </tr>
             </thead>
             <tbody>
                 {% for confirmation in confirmations %}
                 <tr>
-                    <td>{{confirmation.name}}</td>
+                     <td>{{confirmation.name}}</td>
                     <td>{{confirmation.food_restriction if confirmation.has_food_restriction else 'Não tem'}}</td>
                     <td>{{'Sim' if confirmation.is_vegetarian else 'Não'}}</td>
+                    <td>{{confirmation.music if confirmation.music else ''}}</td>
                     <td>{{confirmation.comment if confirmation.comment else '' }}</td>
                 </tr>
                 {% endfor %}

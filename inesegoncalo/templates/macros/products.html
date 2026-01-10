@@ -1,75 +1,77 @@
-{% macro card(product) %}
-{% import 'macros/progress_bar.html' as progress_bar %}
-<div class="product_card productSliddingDivs">
-    <a href="{{url_for('products.product',product_id=product.id)}}">
-        {% if product.images %}
-        <img src="{{url_for('static',filename=product.images[0].path)}}" alt="Imagem da Peça">
-        {% else %}
-        <img src="{{url_for('static',filename='images/products/no_product.jpg')}}" alt="Imagem da Peça">
-        {% endif %}
-        <div>
-            <p>{{product.name}}</p>
-        </div>
-        {% if product.show_price %}
-        <div>
-            <p>{{product.price}}€</p>
-            {{progress_bar.progress_bar(product.calculate_percentage()|int)}}
-        </div>
-        {% endif %}
-    </a>
-</div>
-{% endmacro %}
+{% import 'macros/contributions.html' as contributions %}
 
-{% macro card_paid(product) %}
-{% import 'macros/progress_bar.html' as progress_bar %}
-<div class="product_card paid productSliddingDivs">
-    <a href="{{url_for('products.product',product_id=product.id)}}">
-        {% if product.images %}
-        <img src="{{url_for('static',filename=product.images[0].path)}}" alt="Imagem da Peça">
-        {% else %}
-        <img src="{{url_for('static',filename='images/products/no_product.jpg')}}" alt="Imagem da Peça">
-        {% endif %}
-        {% if product.show_price %}
-        <div>
-            <p>{{product.name}}</p>
-            <p>{{product.price}}€</p>
-            {{progress_bar.progress_bar(product.calculate_percentage()|int)}}
-        </div>
-        {% endif %}
-    </a>
-</div>
-{% endmacro %}
+{% macro card(product1, product2) %}
+    <!--first section-->
+    <div class="row align-items-center how-it-works d-flex">
+        <div class="col-2 text-center bottom d-inline-flex justify-content-center align-items-center">
+        <div class="circle font-weight-bold">
+            {% if product1.priority != 20 %}
+            <a href="{{url_for('products.product',product_id=product1.id)}}">
+                <i class="fas fa-map-marker-alt" style="color:white"></i> 
+            </a>
+            {% else %}
+            <a>
+                <i class="fas fa-map-marker-alt" style="color:white"></i> 
+            </a>
+            {% endif %}
 
-{% macro honeymoon_card(product) %}
-{% import 'macros/progress_bar.html' as progress_bar %}
-<div class="product_card productSliddingDivs">
-    <a href="{{url_for('honeymoon.product',product_id=product.id)}}">
-        {% if product.images %}
-        <img src="{{url_for('static',filename=product.images[0].path)}}" alt="Imagem da Peça">
-        {% else %}
-        <img src="{{url_for('static',filename='images/products/no_product.jpg')}}" alt="Imagem da Peça">
-        {% endif %}
-        <div>
-            <p>{{product.name}}</p>
-            {{progress_bar.progress_bar(product.calculate_percentage()|int)}}
         </div>
-    </a>
-</div>
-{% endmacro %}
+        </div>
+        <div class="col-6">
+            <h5>
+                {% if product1.priority != 20 %}
+                <a href="{{url_for('products.product',product_id=product1.id)}}" style="color:black"><h5>{{product1.name}}</h5></a>
+                {% else %}
+                <a style="color:black"><h5>{{product1.name}}</h5></a>
+                {% endif %}
 
-{% macro honeymoon_card_paid(product) %}
-{% import 'macros/progress_bar.html' as progress_bar %}
-<div class="product_card paid productSliddingDivs">
-    <a href="{{url_for('honeymoon.product',product_id=product.id)}}">
-        {% if product.images %}
-        <img src="{{url_for('static',filename=product.images[0].path)}}" alt="Imagem da Peça">
-        {% else %}
-        <img src="{{url_for('static',filename='images/products/no_product.jpg')}}" alt="Imagem da Peça">
-        {% endif %}
-        <div>
-            <p>{{product.name}}</p>
-            {{progress_bar.progress_bar(product.calculate_percentage()|int)}}
+            </h5>
+            {% if product1.priority == 20 %}
+            <p>{{product1.description}}</p>
+            {% endif %}
         </div>
-    </a>
-</div>
+    </div>
+    {% if product2.priority != 20 %}
+
+    <!--path between 1-2-->
+    <div class="row timeline">
+        <div class="col-2">
+        <div class="corner top-right"></div>
+        </div>
+        <div class="col-8">
+        <hr/>
+        </div>
+        <div class="col-2">
+        <div class="corner left-bottom"></div>
+        </div>
+    </div>
+    <!--second section-->
+    <div class="row align-items-center justify-content-end how-it-works d-flex">
+        <div class="col-6 text-right">
+            <h5>
+                <a href="{{url_for('products.product',product_id=product2.id)}}" style="color:black"><h5>{{product2.name}}</h5></a>
+
+            </h5>
+        </div>
+        <div class="col-2 text-center full d-inline-flex justify-content-center align-items-center">
+        <div class="circle font-weight-bold">
+            <a href="{{url_for('products.product',product_id=product2.id)}}">
+                <i class="fas fa-map-marker-alt" style="color:white"></i> 
+            </a>
+        </div>
+        </div>
+    </div>
+    <!--path between 2-3-->
+    <div class="row timeline">
+        <div class="col-2">
+        <div class="corner right-bottom"></div>
+        </div>
+        <div class="col-8">
+        <hr/>
+        </div>
+        <div class="col-2">
+        <div class="corner top-left"></div>
+        </div>
+    </div>
+    {% endif %}
 {% endmacro %}

@@ -3,9 +3,9 @@ import unidecode
 
 from flask import Blueprint, flash, g, redirect, render_template, request, url_for , current_app
 from werkzeug.security import check_password_hash, generate_password_hash
-from teresaefrancisco.tools import tools
+from inesegoncalo.tools import tools
 
-from teresaefrancisco.models import Product , Contribution , ProductImage , Confirmation , SpecificInfo
+from inesegoncalo.models import Product , Contribution , ProductImage , Confirmation , SpecificInfo , Hotel , FAQ
 
 bp = Blueprint('edit', __name__, url_prefix='/edit')
 
@@ -108,21 +108,71 @@ def confirmations():
     confirmations = Confirmation.query.all()
     return render_template('edit/confirmations.html',confirmations=confirmations)
 
+@bp.route('/hotels', methods=('GET', 'POST'))
+def hotels():
+    hotels = Hotel.query.all()
+    return render_template('edit/hotels.html',hotels=hotels)
+
+@bp.route('/faqs', methods=('GET', 'POST'))
+def faqs():
+    faqs = FAQ.query.all()
+    return render_template('edit/faqs.html',faqs=faqs)
+
 @bp.route('/specific_info', methods=('GET', 'POST'))
 def specific_info():
     specific_info = SpecificInfo.query.first()
     if request.method == 'POST':
-        title = request.form.get('title')
-        mbway1 = request.form.get('mbway1')
-        mbway2 = request.form.get('mbway2')
-        iban = request.form.get('iban')
-        information = {
-            'title':title,
-            'mbway1':mbway1,
-            'mbway2':mbway2,
-            'iban':iban
-        }
+        information = {}
+        keys = ['title','mbway1','mbway2','iban']
+        for key in keys:
+            information[key] = request.form.get(key)
+            if not information[key] and key in specific_info.information.keys():
+                information[key] = specific_info.information[key]
         specific_info.information = information
         specific_info.save()
         return redirect(url_for('edit.specific_info'))
     return render_template('edit/specific_info.html',specific_info=specific_info)
+
+@bp.route('/hotel/<hotel_id>', methods=('GET', 'POST'))
+@bp.route('/hotel/<hotel_id>/<delete>', methods=('GET', 'POST'))
+def hotel(hotel_id,delete=None):
+    hotel = Hotel.query.filter_by(id=hotel_id).first()
+    if request.method == 'POST':
+        if delete=='delete':
+            hotel.delete()
+        else:
+            name = request.form.get('name')
+            adress =  request.form.get('adress')
+            phone = request.form.get('phone')
+            email = request.form.get('email')
+
+            values = {
+                'name':name,
+                'adress':adress,
+                'phone':phone,
+                'email':email
+            }
+            hotel.update_with_dict(values)
+
+        return redirect(url_for('edit.hotel'))
+    return render_template('edit/hotel.html',hotel=hotel)
+
+@bp.route('/faq/<faq_id>', methods=('GET', 'POST'))
+@bp.route('/faq/<faq_id>/<delete>', methods=('GET', 'POST'))
+def faq(faq_id,delete=None):
+    faq = FAQ.query.filter_by(id=faq_id).first()
+    if request.method == 'POST':
+        if delete=='delete':
+            faq.delete()
+        else:
+            question = request.form.get('question')
+            answer =  request.form.get('answer')
+
+            values = {
+                'question':question,
+                'answer':answer
+            }
+            faq.update_with_dict(values)
+
+        return redirect(url_for('edit.faq'))
+    return render_template('edit/faq.html',faq=faq)

@@ -1,0 +1,20 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="product_form_container">
+    <form method="post" class="product_form">
+        <div class="product_attribute_container">
+            <label for="question"> Pergunta</label>
+            <input type="text" name="question" placeholder="{{faq.question}}">
+        </div>
+        <div class="product_attribute_container">
+            <label for="answer"> Resposta</label>
+            <input type="text" name="answer" placeholder="{{faq.answer}}">
+        </div>
+        <button class="accept">Gravar</button>
+    </form>
+    <form method="post" action="{{url_for('edit.faq',faq_id=faq.id,delete='delete')}}" class="product_form">
+        <button class ="delete">Apagar</button>
+    </form>
+</div>
+{% endblock %}

@@ -3,56 +3,21 @@
 {% import 'macros/contributions.html' as contributions with context %}
 
 {% block content %}
-<script src="{{ url_for('static', filename='js/products.js')}}" defer></script>
-<script src="{{ url_for('static', filename='js/products_product.js')}}" defer></script>
-{% if product.images %}
-{% set product_background = url_for('static',filename=product.images[0].path) %}
-{% else %}
-{% set product_background = url_for('static',filename='images/products/no_product.jpg') %}
-{% endif %}
-<div class="product_background"  style="background:url('{{product_background}}');"> 
-  <div class="product_container_column">
-    {% if contribution %}
-      <div class="contribution_thank_you">
-        {{contribution.thank_you_message()}}
+
+<section class="py-5 contribution_background">
+  <div class=" px-4 px-lg-5 my-5">
+      <div class="row gx-4 gx-lg-5 align-items-center">
+          <div class="col-md-6">
+            <img class="card-img-top mb-5 mb-md-0" src="{{url_for('static',filename=product.images[0].path)}}" alt="..." />
+          </div>
+          <div class="col-md-6">
+              <h1 class="display-5 fw-bolder" style="color: #5086c1;">{{product.name}}</h1>
+              {{contributions.contribution_form()}}
+
+          </div>
       </div>
-    {% endif %}
-    <div class="preco">
-    
-      <p><b>{{product.name}}</b></p>
-      {% if product.description %}
-        <p>{{product.description}}</p>
-      {% endif %}
-      {% if product.show_price %}
-        <p>Preço: {{product.price}}</p>
-        <p>Valor em falta: {{product.missing_value()}}€</p>      
-        {{progress_bar.progress_bar(product.calculate_percentage()|int)}}
-      {% endif %}
-    </div>
-    
-    {{contributions.contribution_form()}}
   </div>
 
-  <div class="product_container_column">
-    {% for image in product.images %}
-      <div class="mySlides">
-        <img src="{{url_for('static',filename=image.path)}}" style="width:100%">
-      </div>
-    {% endfor %}
 
-    {% if product.images|length > 1 %}
-    <a class="prev" onclick="plusSlides(-1)">❮</a>
-    <a class="next" onclick="plusSlides(1)">❯</a>
-  
-    <div class="row product_caroussel">
-      {% for image in product.images %}
-      <div class="column_product">
-        <img class="demo cursor" src="{{url_for('static',filename=image.path)}}" style="height:3rem" value="{{loop.index}}" onclick="currentSlide(this)">
-      </div>
-      {% endfor %}
-    </div>
-    {% endif %}
-  </div>
-</div>
-  
+</section>
 {% endblock %}

@@ -1,4 +1,4 @@
-import teresaefrancisco as app
+import inesegoncalo as app
 
 run_app = app.create_app()
 

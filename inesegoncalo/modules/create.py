@@ -3,9 +3,9 @@ import unidecode
 
 from flask import Blueprint, flash, g, redirect, render_template, request, url_for , current_app
 from werkzeug.security import check_password_hash, generate_password_hash
-from teresaefrancisco.tools import tools
+from inesegoncalo.tools import tools
 
-from teresaefrancisco.models import Product , ProductImage
+from inesegoncalo.models import Product , ProductImage , Hotel , FAQ
 
 bp = Blueprint('create', __name__, url_prefix='/create')
 
@@ -52,3 +52,37 @@ def product():
 
 
     return render_template('create/product.html')
+
+@bp.route('/hotel', methods=('GET', 'POST'))
+def hotel():
+    if request.method == 'POST':
+        name = request.form.get('name')
+        adress = request.form.get('adress')
+        phone = request.form.get('phone')
+        email = request.form.get('email')
+
+        hotel = Hotel(name=name)
+        if adress:
+            hotel.adress = adress
+        if phone:
+            hotel.phone = phone
+        if email:
+            hotel.email = email
+        hotel.create()
+
+        return redirect(url_for('edit.hotels'))
+
+
+    return render_template('create/hotel.html')
+
+@bp.route('/faq', methods=('GET', 'POST'))
+def faq():
+    if request.method == 'POST':
+        question = request.form.get('question')
+        answer = request.form.get('answer')
+
+        faq = FAQ(question=question,answer=answer)
+        faq.create()
+
+        return redirect(url_for('edit.faqs'))
+    return render_template('create/faq.html')

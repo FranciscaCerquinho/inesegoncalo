@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="product_form_container">
+    <form method="post" class="product_form">
+        <div class="product_attribute_container">
+            <label for="name"> Nome</label>
+            <input type="text" name="name" placeholder="{{hotel.name}}">
+        </div>
+        <div class="product_attribute_container">
+            <label for="adress"> Morada</label>
+            <input type="text" name="adress" placeholder="{{hotel.adress}}">
+        </div>
+        <div class="product_attribute_container">
+            <label for="phone"> Telefone</label>
+            <input type="text" name="phone" placeholder="{{hotel.phone}}">
+        </div>
+        <div class="product_attribute_container">
+            <label for="email"> Email</label>
+            <input type="text" name="name" placeholder="{{hotel.email}}">
+        </div>
+        <button class="accept">Gravar</button>
+    </form>
+    <form method="post" action="{{url_for('edit.hotel',hotel_id=hotel.id,delete='delete')}}" class="product_form">
+        <button class ="delete">Apagar</button>
+    </form>
+</div>
+{% endblock %}

@@ -20,7 +20,7 @@
         {% for product in products %}
             <tr>
                 <td class="no_padding"><a href="{{url_for('edit.product',product_id=product.id)}}">{{product.name}}</a></td>
-                <td class="no_padding">{{product.description}}</td>
+                <td class="no_padding"><a href="{{url_for('edit.product',product_id=product.id)}}">{{product.description}}</a></td>
                 <td class="no_padding">{{product.price}}</td>
                 <td class="no_padding">{{product.price_paid}}</td>
                 <td class="no_padding">{{product.store}}</td>

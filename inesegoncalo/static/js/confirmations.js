@@ -8,6 +8,19 @@ function hideFoodRestrictionsInput(){
     foodRestrictions.style.display = "none";
 }
 
+function FoodRestrictionsInput(){
+    var x = document.getElementById("foodRestriction").value;
+    var foodRestrictions = document.getElementById("food_restriction");
+    if (x) {
+        foodRestrictions.style.display = "block";
+    }
+    else{
+        foodRestrictions.style.display = "none";
+    }
+
+}
+
+
 function generateConfirmationsCSV(){
     $.getJSON('/api/to_csv/confirmation',
         function(data) {

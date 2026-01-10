@@ -3,10 +3,22 @@
 {% block content %}
 <script src="{{ url_for('static', filename='js/confirmations.js')}}" defer></script>
 
-<div class="confirmations_background">
-    <div class="column_container" style="padding-top: 5rem;">
-        <h1>Muito obrigado pela confirmação!</h1>
-        <img style="width: 80vh;" src="{{url_for('static',filename='images/confirmations_confirmed.jpg')}}" alt="">
+<div id="booking" class="section">
+    <div class="section-center">
+        <div class="container p-2">
+            <div class="vh-100 d-flex justify-content-center align-items-center">
+                <div class="col-md-4">
+                    <div class="card  bg-white shadow p-1">
+                        <div class="text-center">
+                            <h1>Muito obrigada pela confirmação!</h1>
+                            <p>Estamos muito contentes por podermos contar contigo neste dia tão importante!</p>
+                            <a href="{{url_for('main.index')}}"><button class="btn btn-outline-success p-1">Voltar ao Inicio</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
 {% endblock %}
