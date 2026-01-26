@@ -57,7 +57,6 @@
     .index_background{
         display: flex!important;
         align-items: flex-end!important;
-        background: url('/static/images/index_background_phone.jpg')!important;
         min-height: 100vh!important;
         background-position: top!important;
         background-repeat: no-repeat!important;

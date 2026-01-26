@@ -2347,7 +2347,9 @@ html.no-csstransitions .intro-content__bottom {
   .intro-content {
     max-width: 1080px;
   }
-
+  .intro-content__text{
+    margin-left: 20px;
+  }
   .intro-content__text h1 {
     font-size: 7rem;
   }

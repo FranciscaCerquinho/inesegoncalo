@@ -178,7 +178,6 @@ select {
 }
 
 .index_background{
-  background: url('/static/images/diapedido_2.jpg'); 
   box-shadow: inset 0 0 0 1000px rgb(255 255 255 / 25%);
   min-height:100vh;
   background-position: top;

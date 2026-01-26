@@ -1358,7 +1358,6 @@ textarea {
 
 @media (max-width: 767px) {
     .index_background {
-        background-image: url('../images/diapedido_2.jpg');
         background-size: 200%;
     }
 }
