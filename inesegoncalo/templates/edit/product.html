@@ -11,6 +11,18 @@
                 <label for="description"> Description</label>
                 <input type="text" name="description" placeholder="{{product.description}}">
             </div>
+            <!-- Adicionar depois do campo "priority" -->
+            <div class="product_attribute_container">
+                <label for="category_id">Categoria</label>
+                <select name="category_id">
+                    <option value="">Sem categoria</option>
+                    {% for category in categories %}
+                    <option value="{{ category.id }}" {{ "selected" if product.category_id == category.id }}>
+                        {{ category.name }}
+                    </option>
+                    {% endfor %}
+                </select>
+            </div>
             <div class="product_attribute_container">
                 <label for="price"> Price</label>
                 <input type="number" name="price" placeholder="{{product.price}}">

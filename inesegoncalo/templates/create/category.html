@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="product_form_container">
+    <form method="POST" class="product_form" enctype="multipart/form-data">
+        <div class="product_attribute_container">
+            <label for="name">Nome da Categoria</label>
+            <input type="text" name="name" placeholder="Nome da Categoria" required>
+        </div>
+        <div class="product_attribute_container">
+            <label for='picture'>Imagem da Categoria</label>
+            <input type="file" name="pictures" multiple accept="image/*">
+        </div>
+        <button class="accept" type="submit">Criar Categoria</button>
+    </form>
+</div>
+{% endblock %}

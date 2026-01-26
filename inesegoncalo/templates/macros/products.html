@@ -1,4 +1,51 @@
 {% import 'macros/contributions.html' as contributions %}
+{% import 'macros/contributions.html' as contributions %}
+
+{% macro product_card(product) %}
+<div class="product-card">
+    <a href="{{ url_for('products.product', product_id=product.id) }}">
+        {% if product.images %}
+        <div class="product-card-image">
+            <img src="{{ url_for('static', filename=product.images[0].path) }}" alt="{{ product.name }}">
+        </div>
+        {% endif %}
+        <div class="product-card-content">
+            <h3 class="product-card-title">{{ product.name }}</h3>
+            {% if product.description %}
+            <p class="product-card-description">{{ product.description[:100] }}{% if product.description|length > 100 %}...{% endif %}</p>
+            {% endif %}
+            {% if product.show_price and product.price %}
+            <div class="product-card-price">
+                <span class="price-paid">€{{ "%.2f"|format(product.price_paid) }}</span>
+                <span class="price-total"> / €{{ "%.2f"|format(product.price) }}</span>
+            </div>
+            <div class="product-card-progress">
+                <div class="progress-bar" style="width: {{ product.calculate_percentage() }}%"></div>
+            </div>
+            {% endif %}
+        </div>
+    </a>
+</div>
+{% endmacro %}
+
+{% macro category_card(category, selected_category_id=None) %}
+<a href="{{ url_for('products.all', category_id=category.id) if selected_category_id != category.id|string else url_for('products.all') }}" 
+   class="category-card {% if selected_category_id == category.id|string %}category-card-selected{% endif %}">
+    <div class="category-card-image">
+        {% if category.images and category.images|length > 0 %}
+        <img src="{{ url_for('static', filename=category.images[0].path) }}" alt="{{ category.name }}">
+        {% else %}
+        <div class="category-placeholder">
+            <i class="fas fa-box"></i>
+        </div>
+        {% endif %}
+    </div>
+    <div class="category-card-title">
+        <h4>{{ category.name }}</h4>
+    </div>
+</a>
+{% endmacro %}
+
 
 {% macro card(product1, product2) %}
     <!--first section-->

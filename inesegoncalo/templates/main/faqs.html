@@ -3,13 +3,36 @@
 
 {% block content %}
 <script src="{{ url_for('static', filename='js/faqs.js')}}" defer></script>
+<link href="{{ url_for('static', filename='style/base.css')}}" rel="stylesheet">
 
-<div class="faqs_container">
-  <div class="accordion-content">
-    <h2>FAQ</h2>
-    {% for q_and_a in q_and_as %}
-      {{q_and_a_block.q_and_a_card(q_and_a)}}
-    {% endfor %}
-  </div>
+<div class="faqs-page-container">
+    <div class="faqs-header">
+        <h1 class="faqs-title">Perguntas Frequentes</h1>
+        <p class="faqs-subtitle">Algumas das perguntas mais frequentes</p>
+    </div>
+    
+    <div class="faqs-content">
+        <div class="accordion-container" id="faqAccordion">
+            {% if q_and_as %}
+                {% for q_and_a in q_and_as %}
+                {{ q_and_a_block.q_and_a_card(q_and_a, loop.index) }}
+                {% endfor %}
+            {% else %}
+                <div class="no-faqs-message">
+                    <i class="fas fa-info-circle"></i>
+                    <p>Não há perguntas frequentes disponíveis no momento.</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
 </div>
+
+<style>
+/* Garantir que o body tenha fundo azul */
+body {
+    background: #e8f0f8 !important;
+    min-height: 100vh;
+}
+</style>
+
 {% endblock %}

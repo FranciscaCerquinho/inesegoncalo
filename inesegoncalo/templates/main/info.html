@@ -3,27 +3,29 @@
 {% block content %}
 <link href="{{ url_for('static', filename='style/base.css')}}" rel="stylesheet">
 
-<section id="info">
-  
-<div class="mt-5">
-	<div class="container">
-	  <h3 class="pb-3 pt-2 border-bottom mb-5" style="color:#5086c1">Sobre o dia...</h3>
+<div class="faqs-page-container">
+	<div class="faqs-header">
+        <h1 class="faqs-title">O nosso dia</h1>
+    </div>
 		<div class="row mb-4">
 		  <div class="col-md-6 mb-4">
-			<img  src="{{url_for('static',filename='images/fotoquinta.png')}}" style="width:100%" alt="Image" class="img-fluid">
+			<!--<img  src="{{url_for('static',filename='images/igreja.png')}}" style="width:100%" alt="Image" class="img-fluid">-->
 		  </div>
 		  <div class="col-md-6 mb-5">
-			<p class="mb-5">Querida família e amigos, </p>
-			<p> Contamos com a vossa presença no dia 27 de Julho às 16h30.</p>
-			<p class="mb-5">O dresscode é fato sem gravata. </p>
-			<p class="mb-5">Beatriz - 913688550, Gonçalo - 912913872</p>
-			<p style="color: #5086c1"><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;Rua de Recoutas 140, Espadanedo</p>
-			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3007.500140231362!2d-8.208322625241307!3d41.07991777134052!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd249945e8e1ff5b%3A0x24e97f2d975b3bf0!2sR.%20de%20Recoutas%20140!5e0!3m2!1sen!2spt!4v1716235623495!5m2!1sen!2spt" 
-			width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" width="100%" height="320" frameborder="0" style="border:0" allowfullscreen></iframe>
-	  </div>
+			<p class="mb-5">Cerimónia às 15h00 </p>
+			<p style="color: #5086c1" class="mb-4"><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;Igreja de São Francisco Guimarães</p>
+			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2990.9316886280085!2d-8.29496642404961!3d41.44070387129315!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd24efde9d0de8d9%3A0x5ce4ca40322fe98a!2sIgreja%20de%20S%C3%A3o%20Francisco!5e0!3m2!1spt-PT!2spt!4v1769187387736!5m2!1spt-PT!2spt" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+		</div>
+		<div class="row mb-4">
+			<div class="col-md-6 mb-4">
+			  <!--<img  src="{{url_for('static',filename='images/quinta.jpg')}}" style="width:100%" alt="Image" class="img-fluid">-->
+			</div>
+			<div class="col-md-6 mb-5">
+			  <p class="mb-5">Jantar - Parque da Penha </p>
+			  <p style="color: #5086c1" class="mb-4"><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;Igreja de São Francisco Guimarães</p>
+			  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d383484.64763862645!2d-8.768372337631645!3d41.33118286754139!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd24efa9c5782a13%3A0x2903c83483efc9c3!2sParque%20da%20Penha!5e0!3m2!1spt-PT!2spt!4v1769422274282!5m2!1spt-PT!2spt" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>		  </div>
 	</div>
 
-
-</section>
+</div>
 
 {% endblock %}

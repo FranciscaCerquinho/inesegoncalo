@@ -14,7 +14,7 @@
 
 #booking {
 	font-family: 'PT Sans', sans-serif;
-	background-image: url('../images/diapedido.jpg');
+	background-color: #7da1C4;
 	background-size: cover;
 	background-position: center;
 }
@@ -165,7 +165,7 @@
 
 .booking-form .submit-btn {
 	color: #fff;
-	background-color: #5086c1;
+	background-color: #22364b;
 	font-weight: 400;
 	height: 50px;
 	font-size: 14px;
