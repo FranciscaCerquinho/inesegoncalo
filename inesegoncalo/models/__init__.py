@@ -4,4 +4,7 @@ from .contributions import Contribution
 from .confirmations import Confirmation
 from .specific_info import SpecificInfo
 from .hotels import Hotel
+from .hotels_images import HotelImage
 from .faqs import FAQ
+from .categories import Category
+from .category_images import CategoryImage

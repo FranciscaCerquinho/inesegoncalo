@@ -7,7 +7,7 @@
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Casamento - Beatriz e Gonçalo</title>
+        <title>Casamento - Inês e Gonçalo</title>
 
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
         <link href="{{ url_for('static', filename='images/favicon_io/favicon.ico')}}" rel="icon">
@@ -64,15 +64,22 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarText">
                   <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url_for('confirmations.confirmation')}}">Confirmar Presença</a>
+                      </li>
                    <li class="nav-item">
-                        <a class="nav-link"  href="{{url_for('main.info')}}">Informações</a>
-                    </li>
-                      <li class="nav-item">
-                      <a class="nav-link" href="{{url_for('confirmations.confirmation')}}">Confirmar Presença</a>
+                        <a class="nav-link"  href="{{url_for('main.info')}}">O nosso dia</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="{{url_for('products.all')}}">Lista de Casamento</a>
-                    </li>
+                        <a class="nav-link" href="{{url_for('products.all')}}">Lista de Casamento</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="{{url_for('main.hotels')}}">Local para dormir</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="{{url_for('main.faqs')}}">Perguntas Frequentes</a>
+                      </li>
+                
                   </ul>
                 </div>
                 

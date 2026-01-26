@@ -254,11 +254,15 @@
   }
 
   .btn_contribuir{
-      background-color: #BDC6AF;
+      background-color: #22364b;
       color: #ffffff;
-      border-radius: 25px;
-      border-color: #BDC6AF;
+      font-weight: 400;
+      height: 50px;
+      font-size: 14px;
+      border: none;
+      border-radius: 40px;
       text-transform: uppercase;
       line-height: 3em !important;
       height: auto !important;
+
 }

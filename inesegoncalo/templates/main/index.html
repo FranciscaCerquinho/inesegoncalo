@@ -1,5 +1,5 @@
 {% extends 'layout.html' %}
-{% import 'macros/hotels.html' as hotel_cards %}
+{% import 'macros/confirmations.html' as confirmation_macros %}
 
 {% block content %}
 <script src="{{ url_for('static', filename='js/index.js')}}" defer></script>
@@ -21,18 +21,41 @@
       <div class="column">
         <div class="intro-content__text">
 
-          <h3>
-              Beatriz e Gonçalo
-          </h3>
-
           <h2>
-            27 de Julho - 16h30
+              Inês e Gonçalo
           </h2>
+
+          <h3>
+            30 de Maio 2026
+          </h3>
+          <p></p>
+          <h3>
+            Igreja de São Francisco Guimarães
+          </h3>
       </div> 
       </div>
     </div>
   </div>
 </div>
 
+<!-- Mensagem Section -->
+<div class="message-section">
+  <div class="message-content">
+    <h2 class="message-title">Querida família e amigos</h2>
+    <p class="message-text">
+      Algumas datas ficam para sempre — e o 30 de maio será uma delas.
+    </p>
+    <p class="message-text mt-4">
+      Nesse dia, em Guimarães, começaremos a nossa família, e que felicidade tão grande poder celebrar este momento tão importante das nossas vidas com todos vocês.
+    </p>
+    <p class="message-text mt-4">
+      Criámos este site para partilhar convosco todas as informações sobre o nosso casamento e para vos acompanhar até ao grande dia.
+    </p>
+    <p class="message-text mt-4">
+      Mal podemos esperar para viver este dia convosco    </p>
+  </div>
+</div>
+
+{{ confirmation_macros.confirmation_form() }}
 
 {% endblock %}

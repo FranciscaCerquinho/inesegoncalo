@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="product_form_container">
+    <form method="post" class="product_form" enctype="multipart/form-data">
+        <div class="product_attribute_container">
+            <label for="name">Nome</label>
+            <input type="text" name="name" value="{{ category.name }}" required>
+        </div>
+        {% if category.images %}
+        <div class="product_attribute_container">
+            <label>Imagens Existentes</label>
+            <table class="table-bordered">
+                <thead>
+                    <tr>
+                        <th>Imagem</th>
+                        <th>Path</th>
+                        <th>Apagar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for image in category.images %}
+                    <tr>
+                        <td>
+                            <img src="{{ url_for('static', filename=image.path) }}" 
+                                 alt="Category image" 
+                                 style="max-width: 100px; max-height: 100px;">
+                        </td>
+                        <td>{{ image.path }}</td>
+                        <td><input type="checkbox" name="images_to_delete" value="{{ image.id }}"></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% endif %}
+        <div class="product_attribute_container">
+            <label for='picture'>Adicionar Imagens</label>
+            <input type="file" name="pictures" multiple accept="image/*">
+        </div>
+        <button class="accept">Gravar</button>
+    </form>
+    <form method="post" action="{{ url_for('edit.category', category_id=category.id, delete='delete') }}" class="product_form">
+        <button class="delete">Apagar</button>
+    </form>
+</div>
+{% endblock %}

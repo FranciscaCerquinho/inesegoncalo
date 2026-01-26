@@ -2,24 +2,29 @@
 
 {% block content %}
 <div class="product_form_container">
-    <form method="POST" class="product_form" enctype="multipart/form-data">
-            <div class="product_attribute_container">
-                <label for="name">Nome</label>
-                <input type="text" name="name" placeholder="Nome">
-            </div>
-            <div class="product_attribute_container">
-                <label for="adress">Morada</label>
-                <input type="text" name="adress" placeholder="Morada">
-            </div>
-            <div class="product_attribute_container">
-                <label for="phone">Telefone</label>
-                <input type="text" name="phone" placeholder="Telefone">
-            </div>
-            <div class="product_attribute_container">
-                <label for="email">Email</label>
-                <input type="text" name="email" placeholder="Email">
-            </div>
-            <button class ="accept" type="submit">Gravar</button>
+    <h1 class="ml-4">Criar Hotel</h1>
+    <form method="POST" class="product_form m-4" enctype="multipart/form-data">
+        <div class="product_attribute_container">
+            <label for="name">Nome</label>
+            <input type="text" name="name" placeholder="Nome">
+        </div>
+        <div class="product_attribute_container">
+            <label for="description">Descrição</label>
+            <input type="text" name="description" placeholder="Descrição">
+        </div>
+        <div class="product_attribute_container">
+            <label for="phone">Telefone</label>
+            <input type="text" name="phone" placeholder="Telefone">
+        </div>
+        <div class="product_attribute_container">
+            <label for="link">Link</label>
+            <input type="text" name="link" placeholder="Link">
+        </div>
+        <div class="product_attribute_container">
+            <label for='picture'>Fotografias </label>
+            <input type="file" name="pictures" multiple>
+        </div>
+        <button class="btn btn_contribuir d-flex justify-content-center accept" type="submit">Gravar</button>
     </form>
 </div>
 {% endblock %}

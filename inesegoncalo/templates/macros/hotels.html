@@ -1,8 +1,19 @@
 {% macro hotel_card(hotel) %}
-<div class="hotel_card">
-    <div class="hotel_name">{{hotel.name}}</div>
-    <div class="hotel_adress">{{hotel.adress}}</div>
-    <div class="hotel_phone">{{hotel.phone}}</div>
-    <div class="hotel_email">{{hotel.email}}</div>
+<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 d-flex align-items-stretch mb-4">
+
+    <div class="post-slide mb-4">
+        <div class="post-content">
+            <h3 class="post-title mt-3">
+                <a href="{{hotel.link}}">{{hotel.name}}</a>
+            </h3>
+        </div>
+        <div class="post-content align-self-end mb-0">
+            <img src="{{ url_for('static', filename=hotel.images[0].path|replace('\\', '/')) }}" alt=""
+                class="fixed-image">
+
+        </div>
+        <a href="{{hotel.link}}" class="btn ml-4 mr-4 btn_contribuir d-flex justify-content-center">Reservar</a>
+
+    </div>
 </div>
 {% endmacro %}

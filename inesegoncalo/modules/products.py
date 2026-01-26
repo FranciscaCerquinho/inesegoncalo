@@ -7,17 +7,38 @@ from inesegoncalo.models import Product , Contribution
 
 bp = Blueprint('products', __name__, url_prefix='/products')
 
+from flask import Blueprint, flash, g, redirect, render_template, request, session, url_for
+from werkzeug.security import check_password_hash, generate_password_hash
+from inesegoncalo.tools import tools
+
+from inesegoncalo.models import Product, Contribution, Category
+
+bp = Blueprint('products', __name__, url_prefix='/products')
+
 @bp.route('/all', methods=('GET', 'POST'))
 @bp.route('/all/<update>', methods=('GET', 'POST'))
-def all(update=None):
-    products = Product.query.filter_by().order_by(Product.priority).all()
+@bp.route('/all/category/<category_id>', methods=('GET', 'POST'))
+def all(update=None, category_id=None):
+    categories = Category.query.all()
+    
+    # Filtrar produtos por categoria se especificado
+    if category_id:
+        products = Product.query.filter_by(category_id=category_id).order_by(Product.priority).all()
+    else:
+        products = Product.query.filter_by().order_by(Product.priority).all()
+    
     if update == 'update':
         for product in products:
             product.update_price_paid()
+    
     products_paid = [product for product in products if product.is_paid()]
     products = [product for product in products if not product.is_paid()]
-    #products = list(set(products) - set(products_paid))
-    return render_template('products/all.html',products=products , products_paid=products_paid)
+    
+    return render_template('products/all.html', 
+                         products=products, 
+                         products_paid=products_paid,
+                         categories=categories,
+                         selected_category_id=category_id)
 
 @bp.route('/add_contribution', methods=('GET', 'POST'))
 def add_contribution():

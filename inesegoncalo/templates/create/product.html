@@ -11,6 +11,16 @@
                 <label for="description">Description</label>
                 <input type="text" name="description" placeholder="Description">
             </div>
+            <!-- Adicionar depois do campo "priority" -->
+            <div class="product_attribute_container">
+                <label for="category_id">Categoria</label>
+                <select name="category_id">
+                    <option value="">Sem categoria</option>
+                    {% for category in categories %}
+                    <option value="{{ category.id }}">{{ category.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
             <div class="product_attribute_container">
                 <label for="price">Price</label>
                 <input type="number" name="price" placeholder="Price">
@@ -31,6 +41,7 @@
                 <label for='picture'>Fotografias </label>
                 <input type="file" name="pictures" multiple>
             </div>
+            
             <button class ="accept" type="submit">Gravar</button>
     </form>
 </div>

@@ -4,42 +4,273 @@
 {% block content %}
 <script src="{{ url_for('static', filename='js/products.js')}}" defer></script>
 <link href="{{ url_for('static', filename='style/base.css')}}" rel="stylesheet">
+<link href="{{ url_for('static', filename='style/lista_casamento.css')}}" rel="stylesheet">
 
-<div class="mt-5">
-	<div class="container">
-	  <h3 class="pb-3 pt-2 border-bottom mb-5" style="color:#5086c1">A NOSSA LUA DE MEL</h3>
-		<div class="row mb-4">
-		  <div class="col-md-6 mb-4">
-			<img  src="{{url_for('static',filename='images/diapedido.jpg')}}" style="width:100%" alt="Image" class="img-fluid">
-		  </div>
-		  <div class="col-md-6 mb-5">
-			<p class="mb-5">Querida família e amigos, </p>
-			<p >Como sabem, ainda não temos uma casa, por isso, se quiserem oferecer um presente, gostávamos muito que nos ajudassem na nossa lua-de-mel: &nbsp <b>14 dias na Namíbia e no Botswana </b> !!!</p>
-			<p class="mb-5">Aqui está o que irá ser o nosso percurso. </p>
-			<p >Para participarem basta:</p>
-			<p  class="mb-2"><b>1.</b> Selecionar 1 passo à vossa escolha</p>
-			<p  class="mb-2"><b>2.</b> Preencher o formulário com nome(s) / valor / mensagem </p>
-			<p  class="mb-2"><b>3.</b> Fazer a transferência para o <b>IBAN:</b></p>
-			<p class="mb-5">PT50 0045 8713 4035 1301 5262 9 </p>
-			<h5>Muito Obrigada e até dia 27 de Julho!</h5>
-		  </div>
-	  </div>
-	</div>
-	<div class="container mb-2">
-		<i class="fas fa-plane fa-2x mb-2" style="color:#5086c1; transform: rotate(45deg)"></i>
+<div class="faqs-page-container">
+	<div class="faqs-header">
+        <h1 class="faqs-title">Lista de Casamento</h1>
+        <p class="faqs-subtitle">Deixamos algumas das nossas sugestões</p>
+    </div>
 
-	  {% for batch in products|batch(2) %}
-		{% set batch_length = batch|length %}
-		{% for index in range(0, batch_length, 2) %}
-			{% if loop.index0 < batch_length %}
-				{{ products_macro.card(batch[loop.index - 1], batch[loop.index - 2])}}
-			{% endif %}
-		{% endfor %}
-	  {% endfor %}
-	  <i class="fas fa-plane fa-2x mb-4" style="color:#5086c1; transform: rotate(220deg)"></i>
+    <!-- Seção de Categorias -->
+    <div class="categories-section">
+        <div class="categories-container">
+            <a href="{{ url_for('products.all') }}" 
+               class="category-card {% if not selected_category_id %}category-card-selected{% endif %}">
+                <div class="category-card-image">
+                    <div class="category-placeholder">
+                        <i class="fas fa-th"></i>
+                    </div>
+                </div>
+                <div class="category-card-title">
+                    <h4>Todos</h4>
+                </div>
+            </a>
+            {% for category in categories %}
+            {{ products_macro.category_card(category, selected_category_id == category.id|string) }}
+            {% endfor %}
+        </div>
+    </div>
 
-	</div>
-  </div> 
+    <!-- Seção de Produtos -->
+    <div class="products-section">
+  
+        
+        <div class="products-grid">
+            {% for product in products %}
+            {{ products_macro.product_card(product) }}
+            {% endfor %}
+            {% for product in products_paid %}
+            <div class="product-card product-card-paid">
+                {{ products_macro.product_card(product) }}
+                <div class="product-paid-badge">Pago</div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
 
+<style>
+.products-page-container {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Categorias Section */
+.categories-section {
+    margin-bottom: 3rem;
+    padding: 2rem 0;
+}
+
+.categories-container {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    padding: 1rem 0;
+    scrollbar-width: thin;
+}
+
+.category-card {
+    flex: 0 0 auto;
+    width: 200px;
+    text-decoration: none;
+    color: inherit;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: white;
+}
+
+.category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+
+.category-card-selected {
+    border: 3px solid #5086c1;
+}
+
+.category-card-image {
+    width: 100%;
+    height: 150px;
+    overflow: hidden;
+    background: #f5f5f5;
+}
+
+.category-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.category-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #5086c1 0%, #6ba3d8 100%);
+    color: white;
+    font-size: 3rem;
+}
+
+.category-card-title {
+    padding: 1rem;
+    text-align: center;
+    background: white;
+}
+
+.category-card-title h4 {
+    margin: 0;
+    font-size: 1rem;
+    color: #333;
+    font-weight: 600;
+}
+
+/* Produtos Section */
+.products-section {
+    margin-top: 2rem;
+}
+
+.products-header {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.products-header h2 {
+    color: #5086c1;
+    margin-bottom: 0.5rem;
+}
+
+.products-count {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.product-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+
+.product-card-paid {
+    opacity: 0.7;
+}
+
+.product-paid-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #09b553;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    z-index: 10;
+}
+
+.product-card-image {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    background: #f5f5f5;
+}
+
+.product-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.product-card-content {
+    padding: 1.5rem;
+}
+
+.product-card-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.product-card-description {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+}
+
+.product-card-price {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.price-paid {
+    color: #5086c1;
+    font-weight: 600;
+}
+
+.price-total {
+    color: #999;
+}
+
+.product-card-progress {
+    width: 100%;
+    height: 8px;
+    background: #e0e0e0;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.product-card-progress .progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #5086c1 0%, #6ba3d8 100%);
+    transition: width 0.3s ease;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .categories-container {
+        gap: 1rem;
+    }
+    
+    .category-card {
+        width: 150px;
+    }
+    
+    .category-card-image {
+        height: 120px;
+    }
+    
+    .products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 1rem;
+    }
+    
+    .product-card-image {
+        height: 200px;
+    }
+}
+</style>
 
 {% endblock %}

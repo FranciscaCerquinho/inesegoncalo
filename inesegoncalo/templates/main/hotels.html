@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+{% import 'macros/hotels.html' as hotels_macro with context %}
+
+
+{% block content %}
+<script src="{{ url_for('static', filename='js/index.js')}}" defer></script>
+<link href="{{ url_for('static', filename='style/base.css')}}" rel="stylesheet">
+
+<div class="faqs-page-container">
+
+    <div class="faqs-header">
+        <h1 class="faqs-title">Onde Ficar?</h1>
+        <p class="faqs-subtitle">Deixamos algumas das nossas sugestões</p>
+    </div>
+      <div class="row pt-2 pb-4">
+        {% for hotel in hotels %}
+        {{hotels_macro.hotel_card(hotel)}}
+        {% endfor %}
+      </div>
+    </div>
+</div>
+
+{% endblock %}

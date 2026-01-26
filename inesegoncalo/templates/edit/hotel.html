@@ -2,27 +2,51 @@
 
 {% block content %}
 <div class="product_form_container">
+    <h1 class="ml-4">Editar Hotel</h1>
+
     <form method="post" class="product_form">
         <div class="product_attribute_container">
             <label for="name"> Nome</label>
             <input type="text" name="name" placeholder="{{hotel.name}}">
         </div>
         <div class="product_attribute_container">
-            <label for="adress"> Morada</label>
-            <input type="text" name="adress" placeholder="{{hotel.adress}}">
+            <label for="description"> Descrição</label>
+            <input type="text" name="description" placeholder="{{hotel.description}}">
         </div>
         <div class="product_attribute_container">
             <label for="phone"> Telefone</label>
             <input type="text" name="phone" placeholder="{{hotel.phone}}">
         </div>
         <div class="product_attribute_container">
-            <label for="email"> Email</label>
-            <input type="text" name="name" placeholder="{{hotel.email}}">
+            <label for="link"> Link</label>
+            <input type="text" name="link" placeholder="{{hotel.link}}">
         </div>
-        <button class="accept">Gravar</button>
+        {% if hotel.images %}
+        <table class="table-bordered">
+            <thead>
+                <tr>
+                    <th>Path</th>
+                    <th>Apagar</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for image in hotel.images %}
+                <tr>
+                    <td>{{image.path}}</td>
+                    <td><input type="checkbox" name="images_to_delete" value="{{image.id}}"></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+        <div class="product_attribute_container">
+            <label for='picture'>Fotografias </label>
+            <input type="file" name="pictures" multiple>
+        </div>
+        <button class="btn btn_contribuir d-flex justify-content-center accept">Gravar</button>
     </form>
     <form method="post" action="{{url_for('edit.hotel',hotel_id=hotel.id,delete='delete')}}" class="product_form">
-        <button class ="delete">Apagar</button>
+        <button class="delete btn btn_contribuir d-flex justify-content-center">Apagar</button>
     </form>
 </div>
 {% endblock %}
