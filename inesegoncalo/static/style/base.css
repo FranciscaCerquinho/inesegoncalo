@@ -1346,21 +1346,24 @@ textarea {
   }
 
   .index_background{
-	
-	background: url('/static/images/aguarela.jpeg'); 
+	background: url('/static/images/IMG_9144.JPG'); 
 	min-height:100vh;
 	background-position: top;
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-attachment:scroll;
+
+  }
+
+  /* Desktop: centrar a imagem no casal (foco na parte inferior da foto) */
+  @media (min-width: 768px) {
+	.index_background {
+	  background-position: center 55%;
+	}
   }
 
 
-@media (max-width: 767px) {
-    .index_background {
-        background-size: 200%;
-    }
-}
+
 
 
   .text_wed_align{
@@ -1462,6 +1465,13 @@ textarea {
 	align-items: center;
 	position: relative;
   }
+
+  /* Desktop: texto mais alto para não sobrepor o casal na imagem */
+  @media (min-width: 768px) {
+	.intro-content {
+	  padding-top: 38vh;
+	}
+  }
   
   
   /* -------------------------------------------------------------------
@@ -1516,6 +1526,9 @@ textarea {
 	letter-spacing: normal;
 	margin-top: 0;
 	margin-bottom: .8rem;
+	background-color: #5086c1;
+	padding: 0.25em 0.5em;
+	display: inline-block;
   }
   
 
@@ -1573,7 +1586,7 @@ textarea {
   
   .message-title {
 	font-size: 3.2rem;
-	color: #5086c1;
+	color: #7da1C4;
 	margin-bottom: 2rem;
 	font-weight: 600;
   }
@@ -1670,6 +1683,132 @@ textarea {
     
     .faqs-subtitle {
         font-size: 1rem;
+    }
+}
+
+/* O nosso dia – secção em cartões */
+.info-day-section {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    padding: 4rem 1.5rem 5rem;
+    min-height: 60vh;
+}
+
+.info-day-wrap {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.info-day-title {
+    font-size: 2.6rem;
+    font-weight: 600;
+    color: #5086c1;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+}
+
+.info-day-subtitle {
+    text-align: center;
+    color: #6b7280;
+    font-size: 1.1rem;
+    margin-bottom: 3rem;
+}
+
+.info-day-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .info-day-cards {
+        grid-template-columns: 1fr 1fr;
+        gap: 2.5rem;
+    }
+}
+
+.info-day-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.info-day-card:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+}
+
+.info-day-card-image {
+    overflow: hidden;
+    background: #f0f0f0;
+}
+
+.info-day-img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    vertical-align: middle;
+}
+
+.info-day-card-body {
+    padding: 1.5rem 1.5rem 1.25rem;
+}
+
+.info-day-card-label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #5086c1;
+    margin-bottom: 0.35rem;
+}
+
+.info-day-card-time {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin: 0 0 0.5rem 0;
+    line-height: 1.3;
+}
+
+.info-day-card-location {
+    font-size: 0.95rem;
+    color: #4b5563;
+    margin: 0 0 1rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.info-day-card-location i {
+    color: #5086c1;
+    flex-shrink: 0;
+}
+
+.info-day-map-wrap {
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 0.5rem;
+}
+
+.info-day-map-wrap iframe {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+}
+
+@media (max-width: 767px) {
+    .info-day-section {
+        padding: 3rem 1rem 4rem;
+    }
+    .info-day-title {
+        font-size: 2rem;
+    }
+    .info-day-subtitle {
+        margin-bottom: 2rem;
     }
 }
 
