@@ -2,17 +2,18 @@
 
 {% block content %}
 <script src="{{ url_for('static', filename='js/confirmations.js')}}" defer></script>
+<link href="{{ url_for('static', filename='style/base.css')}}" rel="stylesheet">
 
 <div id="booking" class="section">
-    <div class="section-center">
+    <div class="section-center booking-form">
         <div class="container p-2">
             <div class="vh-100 d-flex justify-content-center align-items-center">
                 <div class="col-md-4">
-                    <div class="card  bg-white shadow p-1">
+                    <div class="card p-1">
                         <div class="text-center">
                             <h1>Muito obrigada!</h1>
                             <p>Estamos muito contentes por podermos contar contigo neste dia tão importante!</p>
-                            <a href="{{url_for('main.index')}}"><button class="btn btn-outline-success p-1">Voltar ao Inicio</button></a>
+                            <a href="{{url_for('main.index')}}"><button class=" submit-btn p-1">Voltar ao Inicio</button></a>
                         </div>
                     </div>
                 </div>

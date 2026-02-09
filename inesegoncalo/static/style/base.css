@@ -1842,3 +1842,19 @@ textarea {
     }
 }
 
+
+#booking .card{
+	background-color: transparent !important;
+	padding-top: 20px;
+    padding-bottom: 20px;
+	border: none !important;
+
+}
+
+#booking p {
+	color: white !important;
+}
+
+#booking h1 {
+	color: white !important;
+}
