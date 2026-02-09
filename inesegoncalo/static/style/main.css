@@ -359,10 +359,9 @@ mark {
 }
 
 hr {
-  border: solid #e0e0e0;
+  border: solid #5086c1;
   border-width: 1px 0 0;
   clear: both;
-  margin: 8rem 0 9.6rem;
   height: 0;
 }
 
