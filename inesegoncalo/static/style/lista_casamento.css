@@ -1,3 +1,49 @@
+/* Lista de Casamento – texto introdutório */
+.lista-casamento-page .faqs-header {
+  padding: 2rem 0 2.5rem;
+}
+
+/* Igual ao .message-title do index */
+.lista-casamento-title {
+  font-size: 3.2rem;
+  color: #7da1C4;
+  margin-bottom: 2rem;
+  font-weight: 600;
+}
+
+.lista-casamento-intro {
+  max-width: 86rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.lista-casamento-intro p {
+  font-size: 1.8rem;
+  font-weight: 400;
+  line-height: 1.8;
+  color: #333;
+  margin: 0 0 1rem 0;
+}
+
+.lista-casamento-intro p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .lista-casamento-title {
+    font-size: 2.4rem;
+  }
+
+  .lista-casamento-intro {
+    max-width: 100%;
+  }
+
+  .lista-casamento-intro p {
+    font-size: 1.6rem;
+    line-height: 1.8;
+  }
+}
+
 .dark {
   background: #110f16;
 }
