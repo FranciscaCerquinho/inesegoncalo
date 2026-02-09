@@ -1358,7 +1358,7 @@ textarea {
   /* Desktop: centrar a imagem no casal (foco na parte inferior da foto) */
   @media (min-width: 768px) {
 	.index_background {
-	  background-position: center 55%;
+	  background-position: center 22%;
 	}
   }
 
@@ -1469,7 +1469,7 @@ textarea {
   /* Desktop: texto mais alto para não sobrepor o casal na imagem */
   @media (min-width: 768px) {
 	.intro-content {
-	  padding-top: 38vh;
+	  padding-top: 75vh;
 	}
   }
   
@@ -1513,16 +1513,7 @@ textarea {
 	position: relative;
   }
   
-  .intro-content__text h3::before {
-	content: "";
-	display: block;
-	width: 7.2rem;
-	height: 1px;
-	background-color: rgba(255, 255, 255, 0.15);
-	position: absolute;
-	top: 1rem;
-	right: calc(100% + 2.8rem);
-  }
+ 
   
   .intro-content__text h2 {
 	font-family: 'Metropolis', sans-serif;
@@ -1536,6 +1527,38 @@ textarea {
 	background-color: #5086c1;
 	padding: 0.25em 0.5em;
 	display: block;
+	width: 100%;
+  }
+
+  /* Em ecrãs pequenos, a barra azul deve ir de uma ponta à outra */
+  @media (max-width: 600px) {
+	.intro-content {
+	  max-width: 100vw;
+	  padding-left: 0;
+	  padding-right: 0;
+	}
+
+	/* Remover margens/padding da grelha apenas na secção inicial,
+	   para que a barra azul encoste a ambos os lados do ecrã */
+	.indexContainer .row {
+	  margin-left: 0;
+	  margin-right: 0;
+	  max-width: 100%;
+	}
+
+	.indexContainer .column {
+	  padding-left: 0;
+	  padding-right: 0;
+	}
+
+	.intro-content__text {
+	  width: 100%;
+	}
+
+	.intro-content__text h2 {
+	  padding-left: 1rem;
+	  padding-right: 1rem;
+	}
   }
   
 
@@ -1635,12 +1658,12 @@ textarea {
 }
 
 .faqs-title {
-    font-size: 3rem;
+    font-size: 2.4rem;
     font-weight: 700;
-    color: #22364b;
+    color: #7da1C4;
     margin-bottom: 1rem;
     letter-spacing: -0.5px;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+	font-family: 'Metropolis', sans-serif;
 }
 
 .faqs-subtitle {

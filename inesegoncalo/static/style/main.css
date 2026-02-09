@@ -1820,16 +1820,7 @@ input::-moz-focus-inner {
   position: relative;
 }
 
-.intro-content__text h3::before {
-  content: "";
-  display: block;
-  width: 7.2rem;
-  height: 1px;
-  background-color: rgba(255, 255, 255, 0.15);
-  position: absolute;
-  top: 1rem;
-  right: calc(100% + 2.8rem);
-}
+
 
 .intro-content__text h1 {
   font-family:"HelveticaNeue-Light";
@@ -2347,9 +2338,7 @@ html.no-csstransitions .intro-content__bottom {
   .intro-content {
     max-width: 1080px;
   }
-  .intro-content__text{
-    margin-left: 20px;
-  }
+
   .intro-content__text h1 {
     font-size: 7rem;
   }
@@ -2383,9 +2372,7 @@ html.no-csstransitions .intro-content__bottom {
 }
 
 @media screen and (max-width:1100px) {
-  .intro-content__text h3::before {
-    width: 4rem;
-  }
+
 
   .intro-social {
     right: 4rem;
@@ -2418,9 +2405,7 @@ html.no-csstransitions .intro-content__bottom {
     padding-top: 16rem;
   }
 
-  .intro-content__text h3::before {
-    display: none;
-  }
+
 
   .intro-content__text h1 {
     font-size: 4.8rem;

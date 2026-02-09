@@ -3,21 +3,144 @@
 {% import 'macros/contributions.html' as contributions with context %}
 
 {% block content %}
+<link href="{{ url_for('static', filename='style/base.css')}}" rel="stylesheet">
 
-<section class="py-5 contribution_background">
-  <div class=" px-4 px-lg-5 my-5">
-      <div class="row gx-4 gx-lg-5 align-items-center">
-          <div class="col-md-6">
-            <img class="card-img-top mb-5 mb-md-0" src="{{url_for('static',filename=product.images[0].path)}}" alt="..." />
-          </div>
-          <div class="col-md-6">
-              <h1 class="display-5 fw-bolder" style="color: #5086c1;">{{product.name}}</h1>
-              {{contributions.contribution_form()}}
 
+<section class="product-page-section py-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <div class="product-detail-card">
+          <div class="row align-items-center">
+            <div class="col-md-6 mb-4 mb-md-0">
+              {% if product.images %}
+              <img
+                class="img-fluid rounded product-detail-image"
+                src="{{ url_for('static', filename=product.images[0].path) }}"
+                alt="{{ product.name }}"
+              />
+              {% endif %}
+            </div>
+            <div class="col-md-6">
+              <h1 class="product-detail-title">{{ product.name }}</h1>
+
+              {% if product.description %}
+              <p class="product-detail-description mb-3">
+                {{ product.description }}
+              </p>
+              {% endif %}
+
+              {% if product.show_price and product.price %}
+      
+
+              {% set percentage = product.calculate_percentage() %}
+              <div class="product-detail-progress mb-4">
+                <div class="d-flex justify-content-between mb-1">
+                  <small class="font-weight-bold">{{ '%.0f'|format(percentage) }}%</small>
+                </div>
+                {{ progress_bar.progress_bar(percentage) }}
+              </div>
+              {% endif %}
+
+              {{ contributions.contribution_form() }}
+            </div>
           </div>
+        </div>
       </div>
+    </div>
   </div>
-
-
 </section>
+
+<style>
+  .product-page-section {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+  }
+
+  .product-detail-card {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+    padding: 2rem;
+  }
+
+  .product-detail-title {
+    color: #5086c1;
+    font-weight: 700;
+    font-size: 1.8rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .product-detail-description {
+    color: #4b5563;
+    font-size: 0.95rem;
+  }
+
+  .product-detail-price {
+    font-size: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  .product-detail-price .price-paid {
+    color: #5086c1;
+    font-weight: 600;
+  }
+
+  .product-detail-price .price-total {
+    color: #9ca3af;
+  }
+
+  .product-detail-image {
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.18);
+    border-radius: 12px;
+  }
+
+  .product-detail-progress .progress {
+    height: 12px;
+    border-radius: 999px;
+    overflow: hidden;
+  }
+
+  .product-detail-progress .progress-bar {
+    background: linear-gradient(90deg, #5086c1 0%, #6ba3d8 100%);
+    font-size: 0.75rem;
+  }
+
+  /* Ajustes de contraste do formulário apenas nesta página */
+ 
+
+  .product-page-section .contribution-form .form-control {
+    background-color: #fdfdfd;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+  }
+
+  .product-page-section .contribution-form .form-control:focus {
+    border-color: #5086c1;
+    box-shadow: 0 0 0 0.15rem rgba(80, 134, 193, 0.25);
+  }
+
+  .product-page-section .contribution-form .submit-btn {
+    box-shadow: 0 6px 18px rgba(80, 134, 193, 0.35);
+  }
+
+  @media (max-width: 767.98px) {
+    .product-page-section {
+      padding-top: 5rem;
+      padding-bottom: 3rem;
+      align-items: flex-start;
+    }
+
+    .product-detail-card {
+      padding: 1.5rem;
+    }
+
+    .product-detail-title {
+      font-size: 1.5rem;
+      text-align: center;
+    }
+  }
+</style>
 {% endblock %}
