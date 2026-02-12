@@ -1,0 +1,64 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<script src="{{ url_for('static', filename='js/index.js')}}" defer></script>
+<link href="{{ url_for('static', filename='style/base.css')}}" rel="stylesheet">
+
+<div class="faqs-page-container">
+    <div class="faqs-header">
+        <h1 class="lista-casamento-title">Pedido de Reserva de Hotel</h1>
+        <p class="faqs-subtitle">
+            Deixem-nos os vossos dados e nós tratamos do resto.
+        </p>
+    </div>
+
+    <div class="faqs-content">
+        <div class="hotel-reservation-card">
+            <p class="hotel-reservation-intro">
+                Podem usar este formulário para nos dizer quantos quartos precisam, para quantas pessoas,
+                e como vos podemos contactar para finalizar a reserva.
+            </p>
+
+            <form class="hotel-reservation-form" method="post" action="{{ url_for('main.hotel_reservation') }}">
+                <div class="hotel-reservation-grid">
+                    <div class="hotel-reservation-field full-width">
+                        <label for="guest_names">Nome(s) dos hóspedes</label>
+                        <input type="text" id="guest_names" name="guest_names" placeholder="Nome(s) completo(s)" required>
+                    </div>
+
+                    <div class="hotel-reservation-field">
+                        <label for="num_rooms">Quantos quartos?</label>
+                        <input type="number" id="num_rooms" name="num_rooms" min="1" value="1" required>
+                    </div>
+
+                    <div class="hotel-reservation-field">
+                        <label for="num_people">Quantas pessoas são?</label>
+                        <input type="number" id="num_people" name="num_people" min="1" value="2" required>
+                    </div>
+
+                    <div class="hotel-reservation-field">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="o.seu@email.com"
+                            required>
+                    </div>
+
+                    <div class="hotel-reservation-field">
+                        <label for="phone">Telemóvel</label>
+                        <input type="tel" id="phone" name="phone" placeholder="912 345 678" required>
+                    </div>
+                </div>
+
+                <div class="hotel-reservation-actions">
+                    <a href="{{ url_for('main.hotels') }}" class="btn btn-secondary hotel-reservation-back">
+                        Voltar à lista de hotéis
+                    </a>
+                    <button class="btn btn_contribuir accept hotel-reservation-submit" type="submit">
+                        Enviar pedido
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

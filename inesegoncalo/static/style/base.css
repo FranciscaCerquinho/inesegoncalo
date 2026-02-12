@@ -1858,3 +1858,200 @@ textarea {
 #booking h1 {
 	color: white !important;
 }
+
+/* Admin / backoffice */
+.admin-page-container {
+    min-height: 100vh;
+    padding: 4rem 3rem;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4ecf7 50%, #c3d4f0 100%);
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.admin-header {
+    margin: 0 0 3rem 0;
+    text-align: left;
+}
+
+.admin-header h1 {
+    font-size: 2.4rem;
+    margin-bottom: 0.5rem;
+    color: #111827;
+}
+
+.admin-header p {
+    font-size: 1rem;
+    color: #4b5563;
+}
+
+.admin-grid {
+    max-width: 700px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2.2rem;
+}
+
+.admin-section {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 1.8rem 1.6rem;
+    box-shadow: 0 14px 30px rgba(15, 23, 42, 0.14);
+    border: 1px solid rgba(148, 163, 184, 0.4);
+}
+
+.admin-section h2 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: #111827;
+}
+
+.admin-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+}
+
+.admin-link {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.95rem;
+    color: #2563eb;
+    padding: 0.35rem 0.1rem;
+    border-radius: 999px;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease;
+}
+
+.admin-link::before {
+    content: "↗";
+    font-size: 0.8rem;
+    margin-right: 0.45rem;
+}
+
+.admin-link:hover {
+    background-color: #eff6ff;
+    color: #1d4ed8;
+    transform: translateY(-1px);
+}
+
+@media (max-width: 900px) {
+    .admin-page-container {
+        padding: 3rem 1.25rem;
+    }
+}
+
+/* Hotel reservation form */
+.hotel-reservation-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 2.5rem 2.5rem 2rem;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.12);
+    border: 1px solid rgba(148, 163, 184, 0.25);
+}
+
+.hotel-reservation-intro {
+    font-size: 1.05rem;
+    color: #4b5563;
+    margin-bottom: 1.8rem;
+}
+
+.hotel-reservation-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.hotel-reservation-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem 1.75rem;
+}
+
+.hotel-reservation-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.hotel-reservation-field.full-width {
+    grid-column: 1 / -1;
+}
+
+.hotel-reservation-field label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #374151;
+}
+
+.hotel-reservation-field input {
+    padding: 0.7rem 0.9rem;
+    border-radius: 10px;
+    border: 1px solid #d1d5db;
+    background-color: #f9fafb;
+    font-size: 0.95rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.hotel-reservation-field input:focus {
+    outline: none;
+    border-color: #5086c1;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(80, 134, 193, 0.18);
+}
+
+.hotel-reservation-actions {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.hotel-reservation-back {
+    padding: 0.65rem 1.2rem;
+    border-radius: 999px;
+    border: 1px solid #d1d5db;
+    background-color: #ffffff;
+    color: #4b5563;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hotel-reservation-back:hover {
+    background-color: #f3f4f6;
+    color: #111827;
+    box-shadow: 0 4px 10px rgba(148, 163, 184, 0.3);
+}
+
+.hotel-reservation-submit {
+    padding: 0.7rem 1.6rem;
+    border-radius: 999px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    box-shadow: 0 8px 20px rgba(80, 134, 193, 0.4);
+}
+
+@media (max-width: 768px) {
+    .hotel-reservation-card {
+        padding: 1.75rem 1.5rem 1.5rem;
+    }
+
+    .hotel-reservation-grid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+
+    .hotel-reservation-actions {
+        flex-direction: column-reverse;
+        align-items: stretch;
+    }
+
+    .hotel-reservation-back,
+    .hotel-reservation-submit {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+    }
+}

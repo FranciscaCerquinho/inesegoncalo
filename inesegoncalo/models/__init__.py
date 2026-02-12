@@ -8,3 +8,4 @@ from .hotels_images import HotelImage
 from .faqs import FAQ
 from .categories import Category
 from .category_images import CategoryImage
+from .hotel_reservations import HotelReservation

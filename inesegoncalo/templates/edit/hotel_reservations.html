@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<script src="{{ url_for('static', filename='js/hotel_reservations.js')}}" defer></script>
+
+<div class="edit-page-container container">
+    <div class="edit-card">
+        <div class="edit-card-header">
+            <div>
+                <h2>Pedidos de Reserva de Hotel</h2>
+                <p>Lista de todos os pedidos submetidos através do formulário de alojamento.</p>
+            </div>
+            <button onclick="generateHotelReservationsCSV()" class="btn btn_contribuir accept">
+                Download CSV
+            </button>
+        </div>
+
+        <div class="edit-table-wrapper">
+            <table class="table edit-table">
+                <thead>
+                    <tr>
+                        <th>Nome(s) dos hóspedes</th>
+                        <th>Quartos</th>
+                        <th>Pessoas</th>
+                        <th>Email</th>
+                        <th>Telemóvel</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for reservation in reservations %}
+                    <tr>
+                        <td>{{ reservation.guest_names }}</td>
+                        <td>{{ reservation.num_rooms }}</td>
+                        <td>{{ reservation.num_people }}</td>
+                        <td>{{ reservation.email }}</td>
+                        <td>{{ reservation.phone }}</td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="5" style="text-align: center; padding: 1.5rem 0;">
+                            Ainda não existem pedidos de reserva de hotel.
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

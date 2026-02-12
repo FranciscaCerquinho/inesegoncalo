@@ -24,7 +24,8 @@ from inesegoncalo.models import (
     FAQ,
     HotelImage,
     Category,
-    CategoryImage
+    CategoryImage,
+    HotelReservation,
 )
 
 bp = Blueprint("edit", __name__, url_prefix="/edit")
@@ -159,6 +160,12 @@ def contribution(contribution_id, delete=None):
 def confirmations():
     confirmations = Confirmation.query.all()
     return render_template("edit/confirmations.html", confirmations=confirmations)
+
+
+@bp.route("/hotel_reservations", methods=("GET", "POST"))
+def hotel_reservations():
+    reservations = HotelReservation.query.order_by(HotelReservation.id.desc()).all()
+    return render_template("edit/hotel_reservations.html", reservations=reservations)
 
 
 @bp.route("/hotels", methods=("GET", "POST"))

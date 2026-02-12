@@ -3,25 +3,50 @@
 {% block content %}
 <script src="{{ url_for('static', filename='js/contributions.js')}}" defer></script>
 
-<div class="fundo_products"> 
-    <div class="background_trsp" id="white_back_for_products">
-      <div class="contributions_box">
-
-        {% for contribution in contributions %}
-
-        <div class="contribution_card_box">
-          <div class ="contribution_card">    
-            <div>{{contribution.name}}</div>
-            {% if contribution.product %}
-            <div>{{contribution.product.name}}</div>
-            {% endif %}
-            <div>{{contribution.value_contributed}}</div>
-            <div>{{contribution.message}}</div>
-          </div>
+<div class="edit-page-container container">
+    <div class="edit-card">
+        <div class="edit-card-header">
+            <div>
+                <h2>Ver todas as contribuições</h2>
+                <p>Lista de todas as contribuições recebidas através da lista de casamento.</p>
+            </div>
+            <button onclick="generateContributionsCSV()" class="btn btn_contribuir accept">
+                Download CSV
+            </button>
         </div>
-        {% endfor %}
-      </div>
+
+        <div class="edit-table-wrapper">
+            <table class="table edit-table">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Produto</th>
+                        <th>Valor</th>
+                        <th>Mensagem</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for contribution in contributions %}
+                    <tr>
+                        <td>{{ contribution.name }}</td>
+                        <td>
+                            {% if contribution.product %}
+                                {{ contribution.product.name }}
+                            {% endif %}
+                        </td>
+                        <td>{{ contribution.value_contributed }}</td>
+                        <td>{{ contribution.message }}</td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="4" style="text-align: center; padding: 1.5rem 0;">
+                            Ainda não existem contribuições.
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
-    <button onclick="generateContributionsCSV()" target="_blank" class="accept"> Download </button>
 </div>
 {% endblock %}
