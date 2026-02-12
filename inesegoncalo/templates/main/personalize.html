@@ -1,53 +1,40 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-<div class="edit_container">
-    <div class="edit_block_container">
-        <h1>Criar</h1>
-        <div class="model_to_edit">
-            <a href="{{url_for('create.product')}}"> Criar um novo produto </a>
+<div class="container mb-6">
+
+
+    <div class="admin-grid row">
+        <div class="admin-section col">
+            <h2>Criar</h2>
+            <div class="admin-links">
+                <a class="admin-link row" href="{{url_for('create.product')}}">Criar um novo produto</a>
+                <a class="admin-link row" href="{{url_for('create.hotel')}}">Criar um novo hotel</a>
+                <a class="admin-link row" href="{{url_for('create.faq')}}">Criar uma nova faq</a>
+                <a class="admin-link row" href="{{url_for('create.category')}}">Criar uma nova categoria</a>
+            </div>
         </div>
-        <div class="model_to_edit">
-            <a href="{{url_for('create.hotel')}}"> Criar um novo hotel </a>
+
+        <div class="admin-section col">
+            <h2>Editar</h2>
+            <div class="admin-links">
+                <a class="admin-link row" href="{{url_for('edit.specific_info')}}">Editar informações no site</a>
+                <a class="admin-link row" href="{{url_for('edit.products')}}">Editar produtos criados</a>
+                <a class="admin-link row" href="{{url_for('edit.contributions')}}">Editar contribuições</a>
+                <a class="admin-link row" href="{{url_for('edit.confirmations')}}">Editar confirmações</a>
+                <a class="admin-link row" href="{{url_for('edit.hotels')}}">Editar hotéis</a>
+                <a class="admin-link row" href="{{url_for('edit.faqs')}}">Editar FAQs</a>
+                <a class="admin-link row" href="{{url_for('edit.categories')}}">Editar categorias</a>
+            </div>
         </div>
-        <div class="model_to_edit">
-            <a href="{{url_for('create.faq')}}"> Criar uma nova faq </a>
-        </div>
-        <div class="model_to_edit">
-            <a href="{{url_for('create.category')}}"> Criar uma nova categoria </a>
-        </div>
-    </div>
-    <div class="edit_block_container">
-        <h1>Editar</h1>
-        <div class="model_to_edit">
-            <a href="{{url_for('edit.specific_info')}}"> Para editar informações no site </a>
-        </div>
-        <div class="model_to_edit">
-            <a href="{{url_for('edit.products')}}"> Para editar produtos criados </a>
-        </div>
-        <div class="model_to_edit">
-            <a href="{{url_for('edit.contributions')}}"> Para editar contribuições </a>
-        </div>
-        <div class="model_to_edit">
-            <a href="{{url_for('edit.confirmations')}}"> Para editar confirmações </a>
-        </div>
-        <div class="model_to_edit">
-            <a href="{{url_for('edit.hotels')}}"> Para editar hotéis </a>
-        </div>
-        <div class="model_to_edit">
-            <a href="{{url_for('edit.faqs')}}"> Para editar faqs </a>
-        </div>
-        <div class="model_to_edit">
-            <a href="{{url_for('edit.categories')}}"> Para editar categorias </a>
-        </div>
-    </div>
-    <div class="edit_block_container">
-        <h1>Ver</h1>
-        <div class="model_to_edit">
-            <a href="{{url_for('confirmations.all')}}"> Para ver todas as confirmações </a>
-        </div>
-        <div class="model_to_edit">
-            <a href="{{url_for('contributions.all')}}"> Para ver todas as contribuições </a>
+
+        <div class="admin-section col ">
+            <h2>Ver / Exportar</h2>
+            <div class="admin-links">
+                <a class="admin-link row" href="{{url_for('confirmations.all')}}">Ver todas as confirmações</a>
+                <a class="admin-link row" href="{{url_for('contributions.all')}}">Ver todas as contribuições</a>
+                <a class="admin-link row" href="{{url_for('edit.hotel_reservations')}}">Ver todas as reservas de hotel</a>
+            </div>
         </div>
     </div>
 </div>

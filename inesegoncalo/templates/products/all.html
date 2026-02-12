@@ -13,6 +13,8 @@
 	    <p>O maior presente que nos podem dar é a vossa presença neste dia tão especial.</p>
             <p>Ainda assim, para quem quiser oferecer algo mais, preparámos esta lista a pensar no lar que estamos a começar a construir juntos — uma casa que imaginamos sempre cheia de família, amigos, amor e momentos muito felizes.</p>
             <p>Cada presente será mais um detalhe dessa casa que queremos viva, acolhedora e com um bocadinho de cada um de vocês.</p>
+            <p>IBAN: PT50 0023 0000 45820340275 94</p>
+
         </div>
     </div>
     <hr>
@@ -32,7 +34,7 @@
                 </div>
             </a>
             {% for category in categories %}
-            {{ products_macro.category_card(category, selected_category_id == category.id|string) }}
+            {{ products_macro.category_card(category, selected_category_id and (selected_category_id|string == category.id|string)) }}
             {% endfor %}
         </div>
     </div>
@@ -86,6 +88,7 @@
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     background: white;
+    cursor: pointer;
 }
 
 .category-card:hover {
@@ -93,8 +96,25 @@
     box-shadow: 0 4px 16px rgba(0,0,0,0.15);
 }
 
-.category-card-selected {
+.category-card-selected,
+.category-card:focus-visible,
+.category-card:active {
     border: 3px solid #5086c1;
+    box-shadow: 0 4px 20px rgba(80, 134, 193, 0.4);
+    background: linear-gradient(180deg, rgba(80, 134, 193, 0.08) 0%, white 40%);
+}
+
+.category-card:focus-visible {
+    outline: none;
+}
+
+.category-card-selected .category-card-title {
+    background: transparent;
+}
+
+.category-card-selected .category-card-title h4 {
+    color: #5086c1;
+    font-weight: 700;
 }
 
 .category-card-image {
@@ -198,13 +218,26 @@
     width: 100%;
     height: 250px;
     overflow: hidden;
-    background: #f5f5f5;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .product-card-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain !important;
+    object-position: center;
+}
+
+/* Garantir que qualquer imagem dentro de um product-card faz sempre fit */
+.product-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain !important;
+    object-position: center;
+    background-color: #ffffff;
 }
 
 .product-card-content {

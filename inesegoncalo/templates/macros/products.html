@@ -28,9 +28,9 @@
 </div>
 {% endmacro %}
 
-{% macro category_card(category, selected_category_id=None) %}
-<a href="{{ url_for('products.all', category_id=category.id) if selected_category_id != category.id|string else url_for('products.all') }}" 
-   class="category-card {% if selected_category_id == category.id|string %}category-card-selected{% endif %}">
+{% macro category_card(category, is_selected=False) %}
+<a href="{{ url_for('products.all', category_id=category.id) if not is_selected else url_for('products.all') }}" 
+   class="category-card {% if is_selected %}category-card-selected{% endif %}">
     <div class="category-card-image">
         {% if category.images and category.images|length > 0 %}
         <img src="{{ url_for('static', filename=category.images[0].path) }}" alt="{{ category.name }}">

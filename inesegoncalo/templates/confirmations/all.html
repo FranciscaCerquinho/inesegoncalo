@@ -3,32 +3,48 @@
 {% block content %}
 <script src="{{ url_for('static', filename='js/confirmations.js')}}" defer></script>
 
-<div class="confirmations_background">
-    <div class="confirmations_table_container">
-        <table  class="table">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Restrições alimentares</th>
-                    <th>Vegetariano</th>
-                    <th>Morada</th>
-                    <th>Observações</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for confirmation in confirmations %}
-                <tr>
-                     <td>{{confirmation.name}}</td>
-                    <td>{{confirmation.food_restriction if confirmation.has_food_restriction else 'Não tem'}}</td>
-                    <td>{{'Sim' if confirmation.is_vegetarian else 'Não'}}</td>
-                    <td>{{confirmation.music if confirmation.music else ''}}</td>
-                    <td>{{confirmation.comment if confirmation.comment else '' }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+<div class="edit-page-container container">
+    <div class="edit-card">
+        <div class="edit-card-header">
+            <div>
+                <h2>Ver todas as confirmações</h2>
+                <p>Lista de todas as confirmações submetidas através do formulário de presença.</p>
+            </div>
+            <button onclick="generateConfirmationsCSV()" class="btn btn_contribuir accept">
+                Download CSV
+            </button>
+        </div>
 
-        <button onclick="generateConfirmationsCSV()" class="accept"> Download </button>
+        <div class="edit-table-wrapper">
+            <table class="table edit-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Restrições alimentares</th>
+                        <th>Vegetariano</th>
+                        <th>Morada</th>
+                        <th>Observações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for confirmation in confirmations %}
+                    <tr>
+                        <td>{{ confirmation.name }}</td>
+                        <td>{{ confirmation.food_restriction if confirmation.has_food_restriction else 'Não tem' }}</td>
+                        <td>{{ 'Sim' if confirmation.is_vegetarian else 'Não' }}</td>
+                        <td>{{ confirmation.music if confirmation.music else '' }}</td>
+                        <td>{{ confirmation.comment if confirmation.comment else '' }}</td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="5" style="text-align: center; padding: 1.5rem 0;">
+                            Ainda não existem confirmações.
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 {% endblock %}
