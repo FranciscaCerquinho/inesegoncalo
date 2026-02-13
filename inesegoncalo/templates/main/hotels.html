@@ -14,22 +14,25 @@
     <div class="row pt-2 pb-4">
         <!-- Card especial para pedido de reserva por formulário -->
         <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 d-flex align-items-stretch mb-4">
-            <div class="post-slide mb-4">
+            <div class="post-slide hotel-card mb-4">
                 <div class="post-content">
                     <h3 class="post-title mt-3">
                         Reserva de Hotel
                     </h3>
                 </div>
-                <div class="post-content align-self-end mb-0">
+                <div class="post-content hotel-description">
                     <p class="m-4">
                         Se precisarem de ajuda com o alojamento, cliquem em "Reservar" e preencham o formulário
                         com os vossos dados.
                     </p>
                 </div>
-                <a href="{{ url_for('main.hotel_reservation') }}"
-                   class="btn ml-4 mr-4 btn_contribuir d-flex justify-content-center">
-                    Reservar
-                </a>
+                <div class="hotel-card-image"></div>
+                <div class="hotel-card-actions">
+                    <a href="{{ url_for('main.hotel_reservation') }}"
+                       class="btn ml-4 mr-4 btn_contribuir d-flex justify-content-center">
+                        Reservar
+                    </a>
+                </div>
             </div>
         </div>
 

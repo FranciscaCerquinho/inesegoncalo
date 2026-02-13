@@ -1651,6 +1651,15 @@ textarea {
     background-attachment: fixed;
 }
 
+/* Permitir scroll vertical no telemóvel */
+@media (max-width: 1024px) {
+    .faqs-page-container {
+        touch-action: pan-y;
+        -webkit-overflow-scrolling: touch;
+        background-attachment: scroll;
+    }
+}
+
 .faqs-header {
     text-align: center;
     margin-bottom: 3rem;

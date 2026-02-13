@@ -266,3 +266,55 @@
       height: auto !important;
 
 }
+
+/* Onde Ficar? – cards com imagem uniforme e botão Reservar alinhado */
+.post-slide.hotel-card {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.post-slide.hotel-card .post-content {
+    padding: 2px 20px 20px;
+}
+
+.post-slide.hotel-card .post-title,
+.post-slide.hotel-card .post-title a {
+    font-size: 15px;
+    font-weight: bold;
+    color: #333;
+    text-transform: uppercase;
+}
+
+.post-slide.hotel-card .post-title a:hover {
+    text-decoration: none;
+    color: #3498db;
+}
+
+.post-slide.hotel-card .hotel-description p {
+    font-size: inherit;
+    line-height: 24px;
+    color: #808080;
+    margin-bottom: 0;
+}
+
+.post-slide.hotel-card .hotel-card-image {
+    width: 100%;
+    height: 200px;
+    min-height: 200px;
+    overflow: hidden;
+    background: #f0f0f0;
+    flex-shrink: 0;
+}
+
+.post-slide.hotel-card .hotel-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.post-slide.hotel-card .hotel-card-actions {
+    margin-top: auto;
+    padding: 1rem 0 0;
+}

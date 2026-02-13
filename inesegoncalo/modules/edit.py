@@ -225,7 +225,7 @@ def hotel(hotel_id, delete=None):
             for index in range(len(files)):
                 file = files[index]
                 if file.filename != "":
-                    image_name = str(product.name).replace(" ", "").lower()
+                    image_name = str(hotel.name).replace(" ", "").lower()
                     image_name = unidecode.unidecode(image_name)
 
                     filename = os.path.join(

@@ -70,6 +70,18 @@ body {
   height: 100%;
 }
 
+/* Permitir scroll no telemóvel: body pode crescer e html faz scroll */
+@media (max-width: 1024px) {
+  html {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  body {
+    min-height: 100%;
+    height: auto;
+  }
+}
+
 body {
   background: #ffffff;
   font-family: 'Metropolis', sans-serif;
