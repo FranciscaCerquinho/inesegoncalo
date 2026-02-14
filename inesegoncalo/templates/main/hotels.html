@@ -27,11 +27,12 @@
                 </div>
                 <div class="post-content hotel-description">
                     <p class="m-4">
-                        Se precisarem de ajuda com o alojamento, cliquem em "Reservar" e preencham o formulário
-                        com os vossos dados.
+                        Somos nós que fazemos as reservas do hotel (pagamento e fatura no momento de check in), por isso precisamos de alguns dados vossos. Depois recebem confirmação por e-mail.
                     </p>
                 </div>
-                <div class="hotel-card-image"></div>
+                <div class="hotel-card-image">
+                    <img src="{{ url_for('static', filename='images/hotels/hotel_fundador.jpg') }}" alt="Hotel Fundador">
+                </div>
                 <div class="hotel-card-actions">
                     <a href="{{ url_for('main.hotel_reservation') }}"
                        class="btn ml-4 mr-4 btn_contribuir d-flex justify-content-center">
