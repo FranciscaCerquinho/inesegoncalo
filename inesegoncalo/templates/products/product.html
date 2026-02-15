@@ -31,8 +31,10 @@
               {% endif %}
 
               {% if product.show_price and product.price %}
-      
-
+              <div class="product-detail-price mb-3">
+                <span class="price-paid">€{{ "%.2f"|format(product.price_paid) }}</span>
+                <span class="price-total"> / €{{ "%.2f"|format(product.price) }}</span>
+              </div>
               {% set percentage = product.calculate_percentage() %}
               <div class="product-detail-progress mb-4">
                 <div class="d-flex justify-content-between mb-1">
