@@ -124,7 +124,10 @@ def contribution(contribution_id, delete=None):
     contribution = Contribution.query.filter_by(id=contribution_id).first()
     if request.method == "POST":
         if delete == "delete":
+            product = contribution.product
             contribution.delete()
+            if product:
+                product.update_price_paid()
         else:
             name = request.form.get("name")
             value_contributed = (
