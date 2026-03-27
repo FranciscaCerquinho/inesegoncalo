@@ -23,7 +23,7 @@
     <div class="categories-section">
         <div class="categories-container">
             <a href="{{ url_for('products.all') }}" 
-               class="category-card {% if not selected_category_id %}category-card-selected{% endif %}">
+               class="category-card {% if not selected_category_id and not sanimaia_mode %}category-card-selected{% endif %}">
                 <div class="category-card-image">
                     <div class="category-placeholder">
                         <i class="fas fa-th"></i>
@@ -34,12 +34,32 @@
                 </div>
             </a>
             {% for category in categories %}
-            {{ products_macro.category_card(category, selected_category_id and (selected_category_id|string == category.id|string)) }}
+            {{ products_macro.category_card(category, selected_category_id and (selected_category_id|string == category.id|string), sanimaia_mode) }}
             {% endfor %}
         </div>
     </div>
 
+    {% if sanimaia_mode %}
+    <div class="sanimaia-info-box">
+        <h3>Lista SANIMAIA</h3>
+        <p>Também temos uma lista na loja <strong>SANIMAIA</strong>.</p>
+        <p>Para oferecerem qualquer um destes presentes podem fazê-lo de várias formas:</p>
+        <ul>
+            <li>Visitar a loja da Foz ou da Trofa e referir a lista de casamento Inês Girão e Gonçalo Baptista</li>
+            <li>Contactar a Cristina Maia: <a href="tel:+351912505820">+351 912 505 820</a></li>
+            <li>Contactar por e-mail: <a href="mailto:cristinamaia@sanimaia.com">cristinamaia@sanimaia.com</a></li>
+        </ul>
+        <p>O presente é diretamente comprado a eles e poderá ser-nos entregue posteriormente na loja ou por vocês quando quiserem.</p>
+        {% if sanimaia_pdf_url %}
+        <a class="sanimaia-pdf-link" href="{{ sanimaia_pdf_url }}" target="_blank" rel="noopener noreferrer">Ver lista SANIMAIA (PDF)</a>
+        {% else %}
+        <p class="sanimaia-pdf-pending">Link do PDF da SANIMAIA em breve.</p>
+        {% endif %}
+    </div>
+    {% endif %}
+
     <!-- Seção de Produtos -->
+    {% if not sanimaia_mode %}
     <div class="products-section">
   
         
@@ -55,6 +75,7 @@
             {% endfor %}
         </div>
     </div>
+    {% endif %}
 </div>
 
 <style>
@@ -157,6 +178,88 @@
 /* Produtos Section */
 .products-section {
     margin-top: 2rem;
+}
+
+.sanimaia-info-box {
+    margin: 2rem auto 0 auto;
+    max-width: 860px;
+    background: white;
+    border-radius: 14px;
+    border: 1px solid #d9e5f2;
+    box-shadow: 0 10px 26px rgba(39, 70, 100, 0.12);
+    padding: 2rem 2.2rem;
+    line-height: 1.7;
+    color: #333;
+    text-align: center;
+}
+
+.sanimaia-info-box h3 {
+    margin: 0 0 1rem 0;
+    color: #5086c1;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.sanimaia-info-box p {
+    margin: 0 0 0.85rem 0;
+}
+
+.sanimaia-info-box ul {
+    margin: 1rem auto 1.2rem auto;
+    padding: 0;
+    max-width: 700px;
+    text-align: left;
+    list-style: none;
+}
+
+.sanimaia-info-box li {
+    margin-bottom: 0.55rem;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.sanimaia-info-box li::before {
+    content: "•";
+    color: #5086c1;
+    font-weight: 700;
+    position: absolute;
+    left: 0.4rem;
+    top: 0;
+}
+
+.sanimaia-info-box a {
+    color: #3c78b8;
+    text-decoration: none;
+}
+
+.sanimaia-info-box a:hover {
+    text-decoration: underline;
+}
+
+.sanimaia-pdf-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.8rem;
+    background: linear-gradient(135deg, #5086c1 0%, #6ba3d8 100%);
+    color: #fff !important;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 0.65rem 1.1rem;
+    border-radius: 999px;
+    box-shadow: 0 8px 16px rgba(80, 134, 193, 0.28);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sanimaia-pdf-link:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 18px rgba(80, 134, 193, 0.35);
+    text-decoration: none !important;
+}
+
+.sanimaia-pdf-pending {
+    color: #666;
+    font-style: italic;
 }
 
 .products-header {
@@ -307,6 +410,15 @@
     
     .product-card-image {
         height: 200px;
+    }
+
+    .sanimaia-info-box {
+        padding: 1.4rem 1.1rem;
+        margin-top: 1.5rem;
+    }
+
+    .sanimaia-info-box h3 {
+        font-size: 1.25rem;
     }
 }
 </style>

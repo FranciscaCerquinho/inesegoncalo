@@ -1,4 +1,4 @@
-from flask import Blueprint, flash, g, redirect, render_template, request, session, url_for
+from flask import Blueprint, current_app, flash, g, redirect, render_template, request, session, url_for
 from werkzeug.security import check_password_hash, generate_password_hash
 from inesegoncalo.tools import tools
 
@@ -20,9 +20,14 @@ bp = Blueprint('products', __name__, url_prefix='/products')
 @bp.route('/all/category/<category_id>', methods=('GET', 'POST'))
 def all(update=None, category_id=None):
     categories = Category.query.all()
+    sanimaia_mode = request.args.get('sanimaia') == '1'
+    sanimaia_pdf_url = current_app.config.get(
+        'SANIMAIA_PDF_URL',
+        url_for('static', filename='data/ListaCasamento_Sanimaia_Inês Girão & Gonçalo Baptista.pdf')
+    )
     
     # Filtrar produtos por categoria se especificado
-    if category_id:
+    if category_id and not sanimaia_mode:
         products = Product.query.filter_by(category_id=category_id).order_by(Product.priority).all()
     else:
         products = Product.query.filter_by().order_by(Product.priority).all()
@@ -38,7 +43,9 @@ def all(update=None, category_id=None):
                          products=products, 
                          products_paid=products_paid,
                          categories=categories,
-                         selected_category_id=category_id)
+                         selected_category_id=category_id,
+                         sanimaia_mode=sanimaia_mode,
+                         sanimaia_pdf_url=sanimaia_pdf_url)
 
 @bp.route('/add_contribution', methods=('GET', 'POST'))
 def add_contribution():
