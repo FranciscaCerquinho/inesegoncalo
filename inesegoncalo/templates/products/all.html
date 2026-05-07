@@ -22,8 +22,14 @@
     <!-- Seção de Categorias -->
     <div class="categories-section">
         <div class="categories-container">
+            {% set sanimaia_category = namespace(value=None) %}
+            {% for category in categories %}
+            {% if category.name|lower|trim == 'sanimaia' %}
+            {% set sanimaia_category.value = category %}
+            {% endif %}
+            {% endfor %}
             <a href="{{ url_for('products.all') }}" 
-               class="category-card {% if not selected_category_id and not sanimaia_mode %}category-card-selected{% endif %}">
+               class="category-card {% if not selected_category_id %}category-card-selected{% endif %}">
                 <div class="category-card-image">
                     <div class="category-placeholder">
                         <i class="fas fa-th"></i>
@@ -34,10 +40,46 @@
                 </div>
             </a>
             {% for category in categories %}
+            {% if category.name|lower|trim != 'sanimaia' %}
             {{ products_macro.category_card(category, selected_category_id and (selected_category_id|string == category.id|string), sanimaia_mode) }}
+            {% endif %}
             {% endfor %}
         </div>
     </div>
+
+    <!-- Seção de Produtos -->
+    {% if not sanimaia_mode %}
+    <div class="products-section">
+        <div class="products-grid">
+            <a class="product-card sanimaia-product-card" href="{{ url_for('products.all', sanimaia='1') }}">
+                {% if sanimaia_category.value and sanimaia_category.value.images and sanimaia_category.value.images|length > 0 %}
+                <div class="product-card-image">
+                    <img src="{{ url_for('static', filename=sanimaia_category.value.images[0].path) }}" alt="Lista SANIMAIA">
+                </div>
+                {% else %}
+                <div class="product-card-image sanimaia-product-card-image">
+                    <div class="sanimaia-product-icon">
+                        <i class="fas fa-store"></i>
+                    </div>
+                </div>
+                {% endif %}
+                <div class="product-card-content">
+                    <h3 class="product-card-title">Lista SANIMAIA</h3>
+                    <p class="product-card-description">Descobrir a lista da SANIMAIA e ver como oferecer.</p>
+                </div>
+            </a>
+            {% for product in products %}
+            {{ products_macro.product_card(product) }}
+            {% endfor %}
+            {% for product in products_paid %}
+            <div class="product-card product-card-paid">
+                {{ products_macro.product_card(product) }}
+                <div class="product-paid-badge">Oferecido</div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
 
     {% if sanimaia_mode %}
     <div class="sanimaia-info-box">
@@ -55,25 +97,6 @@
         {% else %}
         <p class="sanimaia-pdf-pending">Link do PDF da SANIMAIA em breve.</p>
         {% endif %}
-    </div>
-    {% endif %}
-
-    <!-- Seção de Produtos -->
-    {% if not sanimaia_mode %}
-    <div class="products-section">
-  
-        
-        <div class="products-grid">
-            {% for product in products %}
-            {{ products_macro.product_card(product) }}
-            {% endfor %}
-            {% for product in products_paid %}
-            <div class="product-card product-card-paid">
-                {{ products_macro.product_card(product) }}
-                <div class="product-paid-badge">Oferecido</div>
-            </div>
-            {% endfor %}
-        </div>
     </div>
     {% endif %}
 </div>
@@ -298,6 +321,26 @@
 .product-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+
+.sanimaia-product-card {
+    border: 1px solid #d9e5f2;
+}
+
+.sanimaia-product-card-image {
+    background: linear-gradient(135deg, #5086c1 0%, #6ba3d8 100%);
+}
+
+.sanimaia-product-icon {
+    width: 86px;
+    height: 86px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 2.2rem;
 }
 
 .product-card-paid {
